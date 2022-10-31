@@ -12,7 +12,7 @@ const GiftScreen = ({ navigation }) => {
         navigation.navigate("ViewAll");
     };
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <View style={{ flex: 1 }}>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.header}>
                     <View style={styles.main}>
@@ -43,7 +43,7 @@ const GiftScreen = ({ navigation }) => {
                             <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>1253544</Text>
                         </View>
                         <View style={{ textAlign: 'right', width: '60%' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>Select Type</Text>
+                            <Text style={{ textAlign: 'right',fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>Select Type</Text>
                         </View>
                     </View>
                     <View style={styles.button}>
@@ -67,7 +67,7 @@ const GiftScreen = ({ navigation }) => {
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Filter(P)</Text>
                             </View>
                             <View style={{ textAlign: 'right', width: '48%', flexDirection: 'row' }}>
-                                <Fo name="arrow-alt-circle-down" style={styles.icon3} />
+                                <Fo name="arrow-alt-circle-down" style={styles.icon} />
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>DSC</Text>
                             </View>
                         </View>
@@ -273,7 +273,7 @@ const GiftScreen = ({ navigation }) => {
                 </View>
             </ScrollView>
 
-        </SafeAreaView>
+        </View>
     );
 };
 export default GiftScreen;
@@ -281,13 +281,9 @@ export default GiftScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
     },
     scrollView: {
         backgroundColor: 'white',
-        marginHorizontal: 10,
-
     },
     header: {
         paddingTop: 30,
@@ -338,6 +334,14 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 20,
     },
+    icon: {
+        color: "#426ef0",
+        fontSize: 25,
+        fontWeight: "bold",
+        width: "100%",
+        textAlign:'right',
+      
+    },
     icon1: {
         color: "#426EF0",
         fontSize: 30,
@@ -355,6 +359,9 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "bold",
         width: "100%",
+        textAlign: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
     icon4: {
         color: "#426ef0",
@@ -420,12 +427,12 @@ const styles = StyleSheet.create({
     btn1: {
         alignItem: 'center',
         justifyContent: 'center',
-        height: 30,
-        width: 70,
-        borderRadius: 15,
+        height: 40,
+        width: 80,
+        borderRadius: 20,
         shadowColor: '#000',
         shadowOffset: { width: -4, height: -4 },
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.3,
         shadowRadius: 8,
         padding: 10,
         marginLeft: 20,
@@ -435,7 +442,7 @@ const styles = StyleSheet.create({
         alignItem: 'center',
         justifyContent: 'center',
         opacity: 0.6,
-        height: 30,
+        height: 40,
         width: 113,
         borderRadius: 15,
         shadowColor: '#000',
@@ -450,7 +457,7 @@ const styles = StyleSheet.create({
         alignItem: 'center',
         justifyContent: 'center',
         opacity: 0.6,
-        height: 30,
+        height: 40,
         width: 70,
         borderRadius: 15,
         shadowColor: '#000',
@@ -465,7 +472,7 @@ const styles = StyleSheet.create({
         alignItem: 'center',
         justifyContent: 'center',
         opacity: 0.6,
-        height: 30,
+        height: 40,
         width: 70,
         borderRadius: 15,
         shadowColor: '#000',
@@ -506,7 +513,7 @@ const styles = StyleSheet.create({
     },
     gift: {
         borderRadius: 15,
-        width: 351,
+        width: 370,
         backgroundColor: 'white',
         shadowColor: '#000',
         shadowOffset: { width: 5, height: 0 },

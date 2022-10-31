@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
-import { View } from "react-native-web";
+
 
 const LoginScreen = ({ navigation }) => {
   const navigate = () => {
