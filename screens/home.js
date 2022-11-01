@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate("ViewAll");
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.header}>
           <View style={styles.head}>
@@ -35,22 +35,22 @@ const HomeScreen = ({ navigation }) => {
             </View>
             <View style={styles.show}>
               <View style={styles.showWindow}>
-                <View style={styles.window1}>
+                <TouchableOpacity style={styles.window1}>
                   <Fo name="coins" style={styles.icon} />
-                  <View style={{ paddingLeft: 10, flexDirection: 'column' }}>
+                  <TouchableOpacity style={{ paddingLeft: 10, flexDirection: 'column' }}>
                     <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'medium' }}>Remaning Points</Text>
                     <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'bold' }}>1253544</Text>
-                  </View>
-                </View>
+                  </TouchableOpacity>
+                </TouchableOpacity>
               </View>
               <View style={styles.showWindow1}>
-                <View style={styles.window2}>
+                <TouchableOpacity style={styles.window2}>
                   <Fo name="crown" style={styles.icon} />
                   <View style={{ paddingLeft: 10, flexDirection: 'column' }}>
                     <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'medium' }}>Remaning Points</Text>
                     <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'bold' }}>1253544</Text>
                   </View>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -192,7 +192,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 export default HomeScreen;
@@ -200,6 +200,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#426ef0",
   },
   scrollView: {
     backgroundColor: 'white',
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   head: {
-    paddingTop: 50,
+    paddingTop: 20,
     paddingBottom: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -287,7 +288,7 @@ const styles = StyleSheet.create({
     width: "30%",
   },
   showWindow: {
-    width: 171,
+    width: 180,
     height: 60,
     borderRadius: 8,
     backgroundColor: 'white',
@@ -295,7 +296,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   showWindow1: {
-    width: 171,
+    width: 180,
     height: 60,
     marginLeft: 10,
     borderRadius: 8,
@@ -314,7 +315,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   main: {
-    width: 351,
+    width: 370,
     height: 120,
     borderRadius: 8,
     backgroundColor: 'white',
@@ -337,7 +338,7 @@ const styles = StyleSheet.create({
   },
   main1: {
     marginTop: 20,
-    width: 351,
+    width: 370,
     height: 60,
     borderRadius: 8,
     backgroundColor: 'white',
@@ -351,7 +352,7 @@ const styles = StyleSheet.create({
 
   main2: {
     marginTop: 20,
-    width: 351,
+    width: 370,
     height: '100%',
     borderRadius: 8,
     backgroundColor: 'white',
@@ -362,7 +363,7 @@ const styles = StyleSheet.create({
   },
   member: {
     borderRadius: 15,
-    width: 351,
+    width: 370,
     backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: { width: 5, height: 0 },

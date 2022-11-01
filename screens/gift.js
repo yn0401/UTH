@@ -12,7 +12,7 @@ const GiftScreen = ({ navigation }) => {
         navigation.navigate("ViewAll");
     };
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.header}>
                     <View style={styles.main}>
@@ -273,7 +273,7 @@ const GiftScreen = ({ navigation }) => {
                 </View>
             </ScrollView>
 
-        </View>
+        </SafeAreaView>
     );
 };
 export default GiftScreen;
@@ -281,13 +281,14 @@ export default GiftScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#426ef0",
     },
     scrollView: {
         backgroundColor: 'white',
     },
     header: {
-        paddingTop: 30,
-        height: 155,
+        paddingTop: 10,
+        height: 135,
         backgroundColor: "#426ef0",
         width: "100%",
         alignItems: "center",

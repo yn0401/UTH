@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
+import QRScreen from "./qr";
 
 
 const LoginScreen = ({ navigation }) => {
   const navigate = () => {
     navigation.navigate("Main");
+    
   };
 
   return (
