@@ -7,8 +7,11 @@ import HomeScreen from "./home";
 import GiftScreen from "./gift";
 import HistoryScreen from "./history";
 import ProfileScreen from "./profile";
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import GuestScreen from "./guest1";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const MainScreen = () => {
   return (

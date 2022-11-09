@@ -56,7 +56,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
         <View style={{
-          flex: 8, top: 80, justifyContent: 'center',
+          flex: 7, top: 90, justifyContent: 'center',
           alignItems: "center",
         }}>
           <View style={styles.main}>
@@ -201,14 +201,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#426ef0",
+    margin: 0,
   },
   scrollView: {
     backgroundColor: 'white',
   },
   header: {
-    flex: 2,
+    flex:2,
+    // height: 160,
     backgroundColor: "#426ef0",
     width: "100%",
+    padding: 20,
   },
   head: {
     paddingTop: 20,
@@ -234,7 +237,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "black",
   },
   info: {
-    // width: '60%',
+   
     // height: '40%',
     paddingTop: 30,
     textAlign: 'center',
@@ -242,11 +245,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   name: {
+    width: '100%',
+    flexWrap: 'wrap',
     paddingTop: 20,
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: "center",
-    fontSize: 30,
+    fontSize: 23,
     fontWeight: 'bold',
     color: 'white'
   },
@@ -259,8 +264,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   show: {
+    top: 10,
     flexDirection: 'row',
-
     padding: 20
   },
   icon: {
@@ -294,6 +299,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: "center",
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: { width: -2, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
   },
   showWindow1: {
     width: 180,
@@ -303,6 +313,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: "center",
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: { width: -2, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
   },
   window1: {
     flexDirection: 'row',

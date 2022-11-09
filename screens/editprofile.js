@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Text, View, SafeAreaView, ScrollView } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View, SafeAreaView, ScrollView, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
 import Ion from "react-native-vector-icons/Ionicons";
 import Fo from "react-native-vector-icons/FontAwesome5";
@@ -7,8 +7,11 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 import LoginScreen from "./login";
+import SelectDropdown from 'react-native-select-dropdown'
 
-const ProfileScreen = ({ navigation }) => {
+const sex = ["Nam", "Nữ", "Giới tính khác"]
+
+const EditProfileScreen = ({ navigation }) => {
     const navigate = () => {
         navigation.navigate("ViewAll");
     };
@@ -17,7 +20,7 @@ const ProfileScreen = ({ navigation }) => {
             <ScrollView style={styles.scrollView}>
                 <View style={styles.header}>
                     <View style={styles.head}>
-                        <Text style={{ color: 'white', fontSize: 34, fontWeight: 'bold' }}>Account</Text>
+                        <Text style={{ color: 'white', fontSize: 34, fontWeight: 'bold', }}>Account</Text>
                         <View style={{ marginLeft: 0, flexDirection: 'row' }}>
                             <View style={styles.square1} >
                             </View>
@@ -36,59 +39,67 @@ const ProfileScreen = ({ navigation }) => {
                         <Image
                             style={styles.img}
                             source={{
-                                uri: "https://znews-photo.zingcdn.me/w660/Uploaded/bzwvopcg/2021_02_12/bl.jpg",
+                                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6iPDSqcgCcAtdEz_rPY0B-sxqMd7hz0Hlg&usqp=CAU",
                             }}
                         />
 
                     </View>
-
+                    <TouchableOpacity style={styles.btnEdit}>
+                        <Fo name="pen" style={styles.iconEdit} />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.main}>
-                    <Text style={styles.txtName}>Hi, Rosé</Text>
-                    <Image
-                        style={styles.imgCard}
-                        source={{
-                            uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/313887721_3264199950495650_4192295597576375198_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=NIicZUU616oAX9SZ-A8&_nc_oc=AQn9_rFMasxMrAVJGnzuzXX0vSjhCb8AVPwdg2NRkweOFqa1NacmO2n9vqfvEzR4Y90&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfC328vI-ZajUWXqX8mPXp4dvTRvvADVeYLH1UQkbvQx_g&oe=6365FB3C",
-                        }}
-                    />
-                    <View>
-                        <Text style={styles.txtMem}>MEMBER</Text>
-                        <Text style={styles.txtMem}>CARD</Text>
-                        <Text style={styles.txtNumber}>**** **** **** 4568</Text>
-                        <Text style={styles.txtNamee}>NHI DANG NGOC YEN</Text>
-                        <Text style={styles.txtRole}>MEMBER</Text>
-                        <View style={styles.row}>
-                            <View style={styles.colunm}>
-                                <Text style={styles.txtBalance}>BALANCE</Text>
-                                <Text style={styles.txtCoin}>1.000.000</Text>
-                            </View>
-                            <View style={styles.colunm1}>
-                                <Text style={styles.txtValid}>VALID FROM</Text>
-                                <Text style={styles.txtDay}>01/01</Text>
-                            </View>
+                    <View style={styles.editName}>
+                        <View style={styles.icon}>
+                            <Fo name="user" style={styles.icon1} />
+                        </View>
+                        <View style={styles.name}>
+                            <Text style={{ fontSize: 12, }}>Tên *</Text>
+                            <TextInput placeholder="Nhập tên đầy đủ của bạn" style={styles.txtName} />
                         </View>
                     </View>
 
-                    <View style={styles.intro}>
-                        <Text style={styles.txtIntro}>Total savings
-                        </Text>
-                        <Text style={styles.txtIntro1}>You signed up on 12 December 2021</Text>
-                        <Text style={styles.point}>54353643,76P</Text>
-                        <Text style={styles.txtThanks}>Thanks to your archievements, Keep up your good form !!</Text>
+                    <View style={styles.editName}>
+                        <View style={styles.icon}>
+                            <Mat name="email" style={styles.icon1} />
+                        </View>
+                        <View style={styles.name}>
+                            <Text style={{ fontSize: 12, }}>Email</Text>
+                            <TextInput placeholder="Nhập email của bạn" style={styles.txtName} />
+                        </View>
                     </View>
 
-                    <TouchableOpacity style={styles.signout}
-                        onPress={LoginScreen}>
-                        <Text style={styles.txtSignout}>Sign Out</Text>
-                        <Fo name="sign-out-alt" size={30} style={{ textAlign: 'right', width: 40 }} />
-                    </TouchableOpacity>
-
+                    <View style={styles.editName}>
+                        <View style={styles.icon}>
+                            <Mat name="email" style={styles.icon1} />
+                        </View>
+                        <View style={styles.name}>
+                            <Text style={{ fontSize: 12, }}>Giới tính</Text>
+                            <SelectDropdown
+                                style={{width: 280}}
+                                data={sex}
+                                onSelect={(selectedItem, index) => {
+                                    console.log(selectedItem, index)
+                                }}
+                                buttonTextAfterSelection={(selectedItem, index) => {
+                                    // text represented after item is selected
+                                    // if data array is an array of objects then return selectedItem.property to render after item is selected
+                                    return selectedItem
+                                }}
+                                rowTextForSelection={(item, index) => {
+                                    // text represented for each item in dropdown
+                                    // if data array is an array of objects then return item.property to represent item in dropdown
+                                    return item
+                                }}
+                            />
+                        </View>
+                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>
     );
 };
-export default ProfileScreen;
+export default EditProfileScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -102,15 +113,14 @@ const styles = StyleSheet.create({
         height: 180,
         backgroundColor: "#426ef0",
         width: "100%",
-        paddingTop: 135,
+        paddingTop: 120,
         alignItems: "center",
         textAlign: 'center',
         justifyContent: 'center',
     },
     main: {
         flex: 7,
-        justifyContent: 'center',
-        alignItems: "center",
+        width: '100%',
         paddingTop: 100
     },
     head: {
@@ -122,7 +132,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         textAlign: 'center',
         justifyContent: 'center',
-        marginBottom: 20,
     },
     square1: {
         backgroundColor: "#426ef0",
@@ -150,6 +159,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    btnEdit: {
+        height: 40,
+        width: 40,
+        top: -120,
+        left: 110,
+        borderRadius: 40 / 2,
+        textAlign: 'center',
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    iconEdit: {
+        color: "white",
+        fontSize: 25,
+        fontWeight: "bold",
+        width: "100%",
+        textAlign: 'center',
+        alignItems: "center",
+        justifyContent: "center",
+    },
     img: {
         height: 180,
         width: 180,
@@ -158,6 +186,27 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         justifyContent: "center"
     },
+    editName: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    icon: {
+        fontSize: 20,
+        width: 30,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 30 / 2,
+        borderWidth: 2,
+        color: '#426ef0',
+        borderColor: '#426ef0'
+    },
+    icon1: {
+        fontSize: 15,
+        color: '#426ef0',
+    },
     imgCard: {
         margin: 20,
         height: 250,
@@ -165,7 +214,6 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     avatar: {
-        top: -30,
         justifyContent: "center",
         alignItems: "center",
         width: 205,
@@ -174,9 +222,18 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 205 / 2
     },
+    name: {
+        flexDirection: 'column',
+        paddingLeft: 15,
+    },
     txtName: {
-        fontSize: 18,
-        fontWeight: 'bold'
+        marginTop: 10,
+        paddingBottom: 5,
+        fontSize: 15,
+        width: 280,
+        color: '#CCCCCC',
+        borderBottomWidth: 1,
+        borderColor: '#CCCCCC'
     },
     txtMem: {
         top: -250,

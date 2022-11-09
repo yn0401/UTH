@@ -17,7 +17,7 @@ const HistoryScreen = ({ navigation }) => {
                 <View style={styles.header}>
                     <View style={styles.main}>
                         <Text style={{ color: 'white', fontSize: 34, fontWeight: 'bold' }}>Transactions</Text>
-                        <View style={{ marginLeft: 20, flexDirection: 'row' }}>
+                        <View style={{ marginLeft: 0, flexDirection: 'row' }}>
                             <View style={styles.square1} >
                             </View>
                             <View style={styles.square1} >
@@ -264,7 +264,6 @@ const styles = StyleSheet.create({
         width: "100%",
         borderTopRightRadius: '30px 30px',
         borderTopLeftRadius: '30px 30px',
-
     },
     avatar: {
         backgroundColor: "#fff",
@@ -294,7 +293,6 @@ const styles = StyleSheet.create({
     },
 
     btnNoti: {
-        marginLeft: 10,
         height: 40,
         width: 40,
         borderRadius: 40 / 2,
@@ -320,6 +318,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#426ef0',
         flexDirection: 'row',
         margin: 20,
+        marginLeft: 20,
         textAlign: 'center',
         alignItems: "center",
         justifyContent: "center",

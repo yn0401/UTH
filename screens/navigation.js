@@ -7,12 +7,15 @@ import LoginScreen from "./login";
 import ViewAll from "./viewAll";
 import MainScreen from "./viewAll";
 
+import GuestScreen from "./guest1";
+
 const { Navigator, Screen } = createNativeStackNavigator();
 
 const HomeNavigator = () => (
   <Navigator screenOptions={{ headerShown: false }}>
     <Screen name="Home" component={LoginScreen} />
     <Screen name="Main" component={MainScreen} />
+    <Screen name="Guest" component={GuestScreen} />
   </Navigator>
 );
 

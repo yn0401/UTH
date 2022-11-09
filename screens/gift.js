@@ -17,7 +17,7 @@ const GiftScreen = ({ navigation }) => {
                 <View style={styles.header}>
                     <View style={styles.main}>
                         <Text style={{ color: 'white', fontSize: 34, fontWeight: 'bold' }}>Gift</Text>
-                        <View style={{ marginLeft: 180, flexDirection: 'row' }}>
+                        <View style={{ marginLeft: 130, flexDirection: 'row' }}>
                             <View style={styles.square1} >
                                 <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
                                     <Fo name="shopping-basket" style={styles.icon3} />
@@ -63,16 +63,16 @@ const GiftScreen = ({ navigation }) => {
                     </View>
                     <View style={{ alignItems: "center", }}>
                         <View style={{ marginTop: 20, flexDirection: 'row', width: '100%' }}>
-                            <View style={{ marginLeft: 35, width: '30%' }}>
+                            <View style={{ marginLeft: 30, width: '50%' }}>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Filter(P)</Text>
                             </View>
-                            <View style={{ textAlign: 'right', width: '48%', flexDirection: 'row' }}>
+                            <View style={{ textAlign: 'right', width: '30%', flexDirection: 'row' }}>
                                 <Fo name="arrow-alt-circle-down" style={styles.icon} />
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>DSC</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={{ alignItems: "center", marginTop: 20 }}>
+                    <View style={{ alignItems: "center", margin: 20, }}>
                         <View style={styles.gift}>
                             <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
                                 <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
@@ -287,7 +287,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     header: {
-        paddingTop: 10,
         height: 135,
         backgroundColor: "#426ef0",
         width: "100%",
@@ -376,7 +375,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         backgroundColor: '#426ef0',
         flexDirection: 'row',
-        margin: 20,
+        marginTop: 20,
         textAlign: 'center',
         alignItems: "center",
         justifyContent: "center",
@@ -389,7 +388,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     square1: {
-
         backgroundColor: "#426ef0",
         flexDirection: 'row',
         width: 50,
@@ -424,6 +422,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItem: 'center',
         justifyContent: 'center',
+        paddingLeft:30,
     },
     btn1: {
         alignItem: 'center',

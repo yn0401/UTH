@@ -7,8 +7,11 @@ import QRScreen from "./qr";
 const LoginScreen = ({ navigation }) => {
   const navigate = () => {
     navigation.navigate("Main");
-    
-  };
+}; 
+
+const navigate1 = () => {
+  navigation.navigate("Guest");
+}; 
 
   return (
     <View style={styles.container}>
@@ -29,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={{marginTop: 20}}>
-        <TouchableOpacity onPress={navigate} style={styles.button}>
+        <TouchableOpacity onPress={navigate1} style={styles.button}>
           <Text style={styles.btn}>Guest</Text>
           <Icon name="arrow-right" style={styles.icon} />
         </TouchableOpacity>
