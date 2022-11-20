@@ -262,8 +262,8 @@ const styles = StyleSheet.create({
         top: -28,
         backgroundColor: 'white',
         width: "100%",
-        borderTopRightRadius: '30px 30px',
-        borderTopLeftRadius: '30px 30px',
+        borderTopRightRadius: 30,
+        borderTopLeftRadius: 30,
     },
     avatar: {
         backgroundColor: "#fff",

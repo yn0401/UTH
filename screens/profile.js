@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 4, height: 5 },
         shadowOpacity: 0.9,
         shadowRadius: 4,
-        letterSpacing: '5px',
+        letterSpacing: 5,
     },
     txtNamee: {
         top: -240,
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { width: 2, height: 5 },
         shadowOpacity: 0.9,
-        letterSpacing: '3px',
+        letterSpacing: 3,
 
     },
     row: {
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         flexWrap: 'wrap',
-        letterSpacing: '1px',
+        letterSpacing: 1,
     },
     txtBalance: {
         top: -225,
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
         fontWeight: 'medium',
         color: 'white',
         flexWrap: 'wrap',
-        letterSpacing: '1px',
+        letterSpacing: 1,
     },
 
     txtValid: {
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
         fontWeight: 'medium',
         color: 'white',
         flexWrap: 'wrap',
-        letterSpacing: '1px',
+        letterSpacing: 1,
     },
     txtCoin: {
         top: -225,
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
         fontWeight: 'medium',
         color: 'white',
         flexWrap: 'wrap',
-        letterSpacing: '1px',
+        letterSpacing: 1,
     },
     txtDay: {
         top: -225,
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
         fontWeight: 'medium',
         color: 'white',
         flexWrap: 'wrap',
-        letterSpacing: '1px',
+        letterSpacing: 1,
     },
     intro: {
         top: -190,
