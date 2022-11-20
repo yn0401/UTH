@@ -36,10 +36,6 @@ function Guest1({ navigation }) {
           <View style={styles.card}>
             <View style={styles.headerCard}>
               <Text style={styles.name}>Chào Bạn !</Text>
-              {/* <Button
-                            title="Go to Details"
-                            onPress={() => navigation.navigate('Thông tin thành viên')}
-                        /> */}
               <TouchableOpacity
                 style={{
                   height: 20,
@@ -70,7 +66,7 @@ function Guest1({ navigation }) {
             </View>
             <TouchableOpacity
               style={{
-                marginTop: 50,
+                marginTop: 30,
                 marginLeft: 20,
                 height: 35,
                 width: 130,
@@ -154,7 +150,7 @@ function Guest1({ navigation }) {
           </View>
           <Text
             style={{
-              marginLeft: 20,
+              marginLeft: 30,
               marginTop: 20,
               fontSize: 16,
               fontWeight: "bold",
@@ -162,277 +158,77 @@ function Guest1({ navigation }) {
           >
             Quà Tặng Nổi Bật
           </Text>
-          <View style={{ alignItems: "center", marginTop: 20 }}>
+          <View style={styles.card2}>
             <View style={styles.gift}>
-              <View
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                  flexDirection: "row",
-                  borderBottomWidth: 2,
-                  height: 80,
-                  borderBottomColor: "#EFF3FF",
-                }}
-              >
-                <View
-                  style={{
-                    width: "80%",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Ion
-                    name="logo-youtube"
-                    style={{
-                      color: "#FC0D1B",
-                      fontSize: 25,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
-                  <Text
-                    style={{ fontWeight: "bold", fontSize: 16, color: "black" }}
-                  >
-                    Youtube Premium
-                  </Text>
+              <View style={styles.contentCard1}>
+                <View style={styles.nameGift}>
+                  <Ion name="logo-youtube"
+                    color="#FC0D1B"
+                    style={styles.iconGift} />
+                  <Text style={styles.txtGiftActive}>Youtube Premium</Text>
                 </View>
-                <View style={{ textAlign: "right", width: "15%" }}>
-                  <Text
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: 16,
-                      color: "#FF6A62",
-                    }}
-                  >
-                    18P
-                  </Text>
+                <View style={styles.viewPoint}>
+                  <Text style={styles.point}>18P</Text>
                 </View>
               </View>
 
-              <View
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                  flexDirection: "row",
-                  borderBottomWidth: 2,
-                  height: 80,
-                  borderBottomColor: "#EFF3FF",
-                }}
-              >
-                <View
-                  style={{
-                    width: "80%",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Mate
-                    name="desktop-mac"
-                    style={{
-                      color: "#2F498C",
-                      fontSize: 25,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
-                  <Text
-                    style={{ fontWeight: "bold", fontSize: 16, color: "black" }}
-                  >
-                    Macbook Pro 2022
-                  </Text>
-                  <Mate
-                    name="fire"
-                    style={{
-                      color: "#FF0000",
-                      fontSize: 25,
-                      marginLeft: 10,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
+              <View style={styles.contentCard1}>
+                <View style={styles.nameGift}>
+                  <Mate name="desktop-mac"
+                    color="#2F498C"
+                    style={styles.iconGift} />
+                  <Text style={styles.txtGiftActive}>Macbook Pro 2022</Text>
+                  <Mate name="fire"
+                    color="#FF0000"
+                    style={styles.iconFire} />
                 </View>
-                <View style={{ textAlign: "right", width: "15%" }}>
-                  <Text
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: 16,
-                      color: "#FF6A62",
-                    }}
-                  >
-                    17P
-                  </Text>
+                <View style={styles.viewPoint}>
+                  <Text style={styles.point}>17P</Text>
                 </View>
               </View>
 
-              <View
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                  flexDirection: "row",
-                  borderBottomWidth: 2,
-                  height: 80,
-                  borderBottomColor: "#EFF3FF",
-                }}
-              >
-                <View
-                  style={{
-                    width: "80%",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Icon
-                    name="feed-star"
-                    style={{
-                      color: "#66CC66",
-                      fontSize: 25,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
-                  <Text
-                    style={{
-                      flexWrap: "wrap",
-                      opacity: 0.3,
-                      fontWeight: "bold",
-                      fontSize: 16,
-                      color: "black",
-                    }}
-                  >
-                    Starbucks (Sold Out)
-                  </Text>
-                  <Mate
-                    name="fire"
-                    style={{
-                      color: "#FF0000",
-                      fontSize: 25,
-                      marginLeft: 10,
-                      fontWeight: "bold",
-                      width: "20%",
-                      opacity: 0.3,
-                    }}
-                  />
+              <View style={styles.contentCard1}>
+                <View style={styles.nameGift}>
+                  <Icon name="feed-star"
+                    color="#66CC66"
+                    style={styles.iconGift} />
+                  <Text style={styles.txtGiftNonActive}>Starbucks (Sold Out)</Text>
+                  <Mate name="fire"
+                    color="#FF0000"
+                    style={styles.iconFire} />
                 </View>
-                <View style={{ textAlign: "right", width: "15%" }}>
-                  <Text
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: 16,
-                      color: "#FF6A62",
-                    }}
-                  >
-                    15P
-                  </Text>
+                <View style={styles.viewPoint}>
+                  <Text style={styles.point}>15P</Text>
                 </View>
               </View>
 
-              <View
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                  flexDirection: "row",
-                  borderBottomWidth: 2,
-                  height: 80,
-                  borderBottomColor: "#EFF3FF",
-                }}
-              >
-                <View
-                  style={{
-                    width: "80%",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Fo
-                    name="birthday-cake"
-                    style={{
-                      color: "#2F498C",
-                      fontSize: 25,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
-                  <Text
-                    style={{ fontWeight: "bold", fontSize: 16, color: "black" }}
-                  >
-                    Teramisu
-                  </Text>
-                  <Mate
-                    name="fire"
-                    style={{
-                      color: "#FF0000",
-                      fontSize: 25,
-                      marginLeft: 10,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
+              <View style={styles.contentCard1}>
+                <View style={styles.nameGift}>
+                  <Fo name="birthday-cake"
+                    color="#2F498C"
+                    style={styles.iconGift} />
+                  <Text style={styles.txtGiftActive}>Teramisu</Text>
+                  <Mate name="fire"
+                    color="#FF0000"
+                    style={styles.iconFire} />
                 </View>
-                <View style={{ textAlign: "right", width: "15%" }}>
-                  <Text
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: 16,
-                      color: "#FF6A62",
-                    }}
-                  >
-                    9P
-                  </Text>
+                <View style={styles.viewPoint}>
+                  <Text style={styles.point}>9P</Text>
                 </View>
               </View>
 
-              <View
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                  flexDirection: "row",
-                  borderBottomWidth: 2,
-                  height: 80,
-                  borderBottomColor: "#EFF3FF",
-                }}
-              >
-                <View
-                  style={{
-                    width: "80%",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Fo
-                    name="birthday-cake"
-                    style={{
-                      color: "#2F498C",
-                      fontSize: 25,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
-                  <Text
-                    style={{ fontWeight: "bold", fontSize: 16, color: "black" }}
-                  >
-                    Teramisu
-                  </Text>
-                  <Mate
-                    name="fire"
-                    style={{
-                      color: "#FF0000",
-                      fontSize: 25,
-                      marginLeft: 10,
-                      fontWeight: "bold",
-                      width: "20%",
-                    }}
-                  />
+              <View style={styles.contentCard1}>
+                <View style={styles.nameGift}>
+                  <Fo name="birthday-cake"
+                    color="#2F498C"
+                    style={styles.iconGift} />
+                  <Text style={styles.txtGiftActive}>Teramisu</Text>
+                  <Mate name="fire"
+                    color="#FF0000"
+                    style={styles.iconFire} />
                 </View>
-                <View style={{ textAlign: "right", width: "15%" }}>
-                  <Text
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: 16,
-                      color: "#FF6A62",
-                    }}
-                  >
-                    9P
-                  </Text>
+                <View style={styles.viewPoint}>
+                  <Text style={styles.point}>9P</Text>
                 </View>
               </View>
             </View>
@@ -450,7 +246,7 @@ function Guest2({ navigation }) {
         <View style={styles.content}>
           <View style={styles.card}>
             <View style={styles.headerCard}>
-              <Text style={styles.name}>Chào !</Text>
+              <Text style={styles.name}>Chào bạn !</Text>
             </View>
             <View style={styles.contentCard}>
               <View style={styles.txtContent}>
@@ -462,7 +258,7 @@ function Guest2({ navigation }) {
             </View>
             <TouchableOpacity
               style={{
-                marginTop: 50,
+                marginTop: 30,
                 marginLeft: 20,
                 height: 35,
                 width: 130,
@@ -912,5 +708,53 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -5 },
     shadowOpacity: 0.1,
     shadowRadius: 7,
+  },
+  card2: {
+    alignItems: "center",
+    margin: 20,
+  },
+  contentCard1: {
+    padding: 20,
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderBottomWidth: 2,
+    height: 80,
+    borderBottomColor: '#EFF3FF'
+  },
+  nameGift: {
+    width: '80%',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  iconGift: {
+    fontSize: 25,
+    fontWeight: "bold",
+    width: "15%",
+  },
+  iconFire: {
+    fontSize: 25,
+    marginLeft: 10,
+    fontWeight: "bold",
+    width: "15%",
+  },
+  txtGiftActive: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: 'black'
+  },
+  txtGiftNonActive: {
+    opacity: 0.3,
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: 'black'
+  },
+  viewPoint: {
+    alignItems: 'flex-end',
+    width: '20%'
+  },
+  point: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: '#FF6A62'
   },
 });

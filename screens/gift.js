@@ -1,11 +1,12 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, SafeAreaView } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, SafeAreaView, FlatList } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
 import Ion from "react-native-vector-icons/Ionicons";
 import Fo from "react-native-vector-icons/FontAwesome5";
 import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
+
 
 const GiftScreen = ({ navigation }) => {
     const navigate = () => {
@@ -46,6 +47,8 @@ const GiftScreen = ({ navigation }) => {
                             <Text style={{ textAlign: 'right',fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>Select Type</Text>
                         </View>
                     </View>
+
+
                     <View style={styles.button}>
                         <TouchableOpacity style={styles.btn1}>
                             <Text style={styles.btnText1}>All</Text>
@@ -66,208 +69,139 @@ const GiftScreen = ({ navigation }) => {
                             <View style={{ marginLeft: 30, width: '50%' }}>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Filter(P)</Text>
                             </View>
-                            <View style={{ textAlign: 'right', width: '30%', flexDirection: 'row' }}>
+                            <View style={{ alignItems:'flex-end', width: '25%', flexDirection: 'row' }}>
                                 <Fo name="arrow-alt-circle-down" style={styles.icon} />
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>DSC</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={{ alignItems: "center", margin: 20, }}>
+                    <View style={styles.card}>
                         <View style={styles.gift}>
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Foun name="shopping-bag"
-                                        style={{
-                                            color: "#2F498C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Salary</Text>
+                                        color="#2F498C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Salary</Text>
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>4365P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>4365P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Mate name="bag-personal"
-                                        style={{
-                                            color: "#502E9C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ opacity: 0.3, fontWeight: 'bold', fontSize: 16, color: 'black' }}>BackPack (Sold Out)</Text>
+                                        color= "#502E9C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftNonActive}>BackPack (Sold Out)</Text>
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>99P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>99P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Ion name="logo-youtube"
-                                        style={{
-                                            color: "#FC0D1B",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Youtube Premium</Text>
+                                        color= "#FC0D1B"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Youtube Premium</Text>
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>18P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>18P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Mate name="desktop-mac"
-                                        style={{
-                                            color: "#2F498C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Macbook Pro 2022</Text>
+                                        color= "#2F498C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Macbook Pro 2022</Text>
                                     <Mate name="fire"
-                                        style={{
-                                            color: "#FF0000",
-                                            fontSize: 25,
-                                            marginLeft: 10,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
+                                        color= "#FF0000"
+                                        style={styles.iconFire} />
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>17P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>17P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Icon name="feed-star"
-                                        style={{
-                                            color: "#66CC66",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ flexWrap: 'wrap', opacity: 0.3, fontWeight: 'bold', fontSize: 16, color: 'black' }}>Starbucks (Sold Out)</Text>
+                                        color= "#66CC66"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftNonActive}>Starbucks (Sold Out)</Text>
                                     <Mate name="fire"
-                                        style={{
-                                            color: "#FF0000",
-                                            fontSize: 25,
-                                            marginLeft: 10,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                            opacity: 0.3
-                                        }} />
+                                        color= "#FF0000"
+                                        style={styles.iconFire} />
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>15P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>15P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Fo name="birthday-cake"
-                                        style={{
-                                            color: "#2F498C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Teramisu</Text>
+                                        color= "#2F498C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
                                     <Mate name="fire"
-                                        style={{
-                                            color: "#FF0000",
-                                            fontSize: 25,
-                                            marginLeft: 10,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
+                                        color= "#FF0000"
+                                        style={styles.iconFire} />
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>9P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>9P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Fo name="birthday-cake"
-                                        style={{
-                                            color: "#2F498C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Teramisu</Text>
+                                        color= "#2F498C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
                                     <Mate name="fire"
-                                        style={{
-                                            color: "#FF0000",
-                                            fontSize: 25,
-                                            marginLeft: 10,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
+                                        color= "#FF0000"
+                                        style={styles.iconFire} />
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>9P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>9P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Fo name="birthday-cake"
-                                        style={{
-                                            color: "#2F498C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Teramisu</Text>
+                                        color= "#2F498C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
                                     <Mate name="fire"
-                                        style={{
-                                            color: "#FF0000",
-                                            fontSize: 25,
-                                            marginLeft: 10,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
+                                        color= "#FF0000"
+                                        style={styles.iconFire} />
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>9P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>9P</Text>
                                 </View>
                             </View>
 
-                            <View style={{ padding: 10, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 2, height: 80, borderBottomColor: '#EFF3FF' }}>
-                                <View style={{ width: '80%', alignItems: 'center', flexDirection: 'row' }}>
+                            <View style={styles.contentCard}>
+                                <View style={styles.nameGift}>
                                     <Fo name="birthday-cake"
-                                        style={{
-                                            color: "#2F498C",
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Teramisu</Text>
+                                        color= "#2F498C"
+                                        style={styles.iconGift} />
+                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
                                     <Mate name="fire"
-                                        style={{
-                                            color: "#FF0000",
-                                            fontSize: 25,
-                                            marginLeft: 10,
-                                            fontWeight: "bold",
-                                            width: "20%",
-                                        }} />
+                                        color= "#FF0000"
+                                        style={styles.iconFire} />
                                 </View>
-                                <View style={{ textAlign: 'right', width: '15%' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#FF6A62' }}>9P</Text>
+                                <View style={styles.viewPoint}>
+                                    <Text style={styles.point}>9P</Text>
                                 </View>
                             </View>
-
-
                         </View>
                     </View>
                 </View>
@@ -429,11 +363,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: 40,
         width: 80,
-        borderRadius: 20,
+        borderRadius: 15,
+        backgroundColor: 'white',
         shadowColor: '#000',
-        shadowOffset: { width: -4, height: -4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 8,
+        shadowOffset: { width: -3, height: 5 },
+        shadowOpacity: 0.1,
+        shadowRadius: 7,
         padding: 10,
         marginLeft: 20,
         marginTop: 10,
@@ -445,10 +380,11 @@ const styles = StyleSheet.create({
         height: 40,
         width: 113,
         borderRadius: 15,
+        backgroundColor: 'white',
         shadowColor: '#000',
-        shadowOffset: { width: -2, height: 3 },
+        shadowOffset: { width: -3, height: 5 },
         shadowOpacity: 0.1,
-        shadowRadius: 8,
+        shadowRadius: 7,
         padding: 10,
         marginLeft: 20,
         marginTop: 10,
@@ -460,10 +396,11 @@ const styles = StyleSheet.create({
         height: 40,
         width: 70,
         borderRadius: 15,
+        backgroundColor: 'white',
         shadowColor: '#000',
-        shadowOffset: { width: -2, height: 3 },
+        shadowOffset: { width: -3, height: 5 },
         shadowOpacity: 0.1,
-        shadowRadius: 8,
+        shadowRadius: 7,
         padding: 10,
         marginLeft: 20,
         marginTop: 10,
@@ -475,10 +412,11 @@ const styles = StyleSheet.create({
         height: 40,
         width: 70,
         borderRadius: 15,
+        backgroundColor: 'white',
         shadowColor: '#000',
-        shadowOffset: { width: -2, height: 3 },
+        shadowOffset: { width: -3, height: 5 },
         shadowOpacity: 0.1,
-        shadowRadius: 8,
+        shadowRadius: 7,
         padding: 10,
         marginLeft: 20,
         marginTop: 10,
@@ -519,5 +457,53 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 5, height: 0 },
         shadowOpacity: 0.1,
         shadowRadius: 7,
-    }
+    },
+    card:{
+        alignItems: "center", 
+        margin: 20,
+    },
+    contentCard:{
+        padding: 20, 
+        alignItems: 'center', 
+        flexDirection: 'row', 
+        borderBottomWidth: 2, 
+        height: 80, 
+        borderBottomColor: '#EFF3FF'
+    },
+    nameGift:{
+        width: '80%', 
+        alignItems: 'center', 
+        flexDirection: 'row'
+    },
+    iconGift:{
+        fontSize: 25,
+        fontWeight: "bold",
+        width: "15%",
+    },
+    iconFire:{
+        fontSize: 25,
+        marginLeft: 10,
+        fontWeight: "bold",
+        width: "15%",
+    },
+    txtGiftActive:{
+        fontWeight: 'bold', 
+        fontSize: 14, 
+        color: 'black'
+    },
+    txtGiftNonActive:{
+        opacity: 0.3, 
+        fontWeight: 'bold', 
+        fontSize: 14, 
+        color: 'black'
+    },
+    viewPoint:{
+        alignItems:'flex-end', 
+        width: '20%'
+    },
+    point:{
+        fontWeight: 'bold', 
+        fontSize: 14, 
+        color: '#FF6A62'
+    },
 });

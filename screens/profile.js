@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     txtMem: {
-        top: -250,
+        top: -260,
         left: 150,
         fontSize: 25,
         width: 170,
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
 
     },
     txtNumber: {
-        top: -240,
+        top: -250,
         fontSize: 25,
         left: -10,
         width: 300,
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
         letterSpacing: '5px',
     },
     txtNamee: {
-        top: -225,
+        top: -240,
         left: -10,
         fontSize: 16,
         width: 300,
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
         left: 150,
     },
     txtRole: {
-        top: -220,
+        top: -235,
         left: -10,
         fontSize: 10,
         width: 300,
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
         letterSpacing: '1px',
     },
     txtBalance: {
-        top: -210,
+        top: -225,
         fontSize: 10,
         fontWeight: 'medium',
         color: 'white',
@@ -255,8 +255,7 @@ const styles = StyleSheet.create({
     },
 
     txtValid: {
-        top: -210,
-
+        top: -225,
         fontSize: 10,
         width: 80,
         fontWeight: 'medium',
@@ -265,7 +264,7 @@ const styles = StyleSheet.create({
         letterSpacing: '1px',
     },
     txtCoin: {
-        top: -210,
+        top: -225,
         fontSize: 25,
         width: 150,
         fontWeight: 'medium',
@@ -274,7 +273,7 @@ const styles = StyleSheet.create({
         letterSpacing: '1px',
     },
     txtDay: {
-        top: -210,
+        top: -225,
         fontSize: 20,
         width: 60,
         fontWeight: 'medium',
@@ -283,7 +282,7 @@ const styles = StyleSheet.create({
         letterSpacing: '1px',
     },
     intro: {
-        top: -170,
+        top: -190,
         padding: 10,
         height: 260,
         width: 340,
@@ -315,7 +314,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     signout: {
-        top: -170,
+        top: -200,
         marginTop: 40,
         padding: 10,
         height: 60,
