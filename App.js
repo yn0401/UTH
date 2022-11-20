@@ -9,12 +9,13 @@ import Navigation from "./screens/navigation";
 import ProfileScreen from './screens/profile';
 import QRScreen from './screens/qr';
 import EditProfileScreen from './screens/editprofile';
+import EventScreen from './screens/event';
 export default function App() {
   return (
     // <Provider>
     //   <Navigation />
     // </Provider>
-<Navigation/>
+<EventScreen/>
   );
 }
 
