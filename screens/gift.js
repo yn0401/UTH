@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, SafeAreaView, FlatList } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View, FlatList, ScrollView, SafeAreaView } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
 import Ion from "react-native-vector-icons/Ionicons";
 import Fo from "react-native-vector-icons/FontAwesome5";
@@ -7,11 +7,69 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { fetchAll } from "../redux/actions/gift";
+import { useEffect } from "react";
 
-const GiftScreen = ({ navigation }) => {
-    const navigate = () => {
-        navigation.navigate("ViewAll");
+
+// const GiftScreen = ({ params, }) => {
+
+
+//     return (
+//         <View style={styles.container}>
+//             <FlatList
+//                 data={db.gifts}
+//                 renderItem={ListGift}
+//             />
+//         </View>
+//     );
+// }
+
+
+
+
+
+function GiftScreen ({ navigation })  {
+
+    //step 2
+    const dispatch = useDispatch();
+    const db = useSelector(store => store.gifts);
+    console.log('db', db)
+    const [data, setData] = useState([]);
+
+    //step3
+    useEffect(() => {
+        dispatch(fetchAll());
+        setData(db.gifts)
+        console.log(data)
+    }, [])
+
+    const ListGift = ({ item }) => {
+        return (
+            <TouchableOpacity>
+                <View style={styles.card} key={item.id}>
+                    <View style={styles.gift}>
+                        <View style={styles.contentCard}>
+                            <View style={styles.nameGift}>
+                                <Mate name={item.iconname}
+                                    color={item.color}
+                                    style={styles.iconGift} />
+                                <Text style={styles.txtGiftActive}>{item.name}</Text>
+                                <Mate name={item.icon}
+                                        color= {item.colorfire}
+                                        style={styles.iconFire} />
+                            </View>
+                            <View style={styles.viewPoint}>
+                                <Text style={styles.point}>{item.point}P</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
     };
+
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
@@ -44,7 +102,7 @@ const GiftScreen = ({ navigation }) => {
                             <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>1253544</Text>
                         </View>
                         <View style={{ textAlign: 'right', width: '60%' }}>
-                            <Text style={{ textAlign: 'right',fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>Select Type</Text>
+                            <Text style={{ textAlign: 'right', fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>Select Type</Text>
                         </View>
                     </View>
 
@@ -69,141 +127,149 @@ const GiftScreen = ({ navigation }) => {
                             <View style={{ marginLeft: 30, width: '50%' }}>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Filter(P)</Text>
                             </View>
-                            <View style={{ alignItems:'flex-end', width: '25%', flexDirection: 'row' }}>
+                            <View style={{ alignItems: 'flex-end', width: '25%', flexDirection: 'row' }}>
                                 <Fo name="arrow-alt-circle-down" style={styles.icon} />
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>DSC</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.card}>
-                        <View style={styles.gift}>
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Foun name="shopping-bag"
-                                        color="#2F498C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Salary</Text>
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>4365P</Text>
-                                </View>
-                            </View>
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Mate name="bag-personal"
-                                        color= "#502E9C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftNonActive}>BackPack (Sold Out)</Text>
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>99P</Text>
-                                </View>
-                            </View>
+                    <FlatList
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Ion name="logo-youtube"
-                                        color= "#FC0D1B"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Youtube Premium</Text>
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>18P</Text>
-                                </View>
-                            </View>
+                        keyExtractor={(item) => item.id}
+                        data={db.gifts}
+                        renderItem={ListGift}
+                    />
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Mate name="desktop-mac"
-                                        color= "#2F498C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Macbook Pro 2022</Text>
-                                    <Mate name="fire"
-                                        color= "#FF0000"
-                                        style={styles.iconFire} />
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>17P</Text>
-                                </View>
-                            </View>
+                    {/* <View style={styles.card}>
+    //                     <View style={styles.gift}>
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Foun name="shopping-bag"
+    //                                     color="#2F498C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Salary</Text>
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>4365P</Text>
+    //                             </View>
+    //                         </View>
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Icon name="feed-star"
-                                        color= "#66CC66"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftNonActive}>Starbucks (Sold Out)</Text>
-                                    <Mate name="fire"
-                                        color= "#FF0000"
-                                        style={styles.iconFire} />
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>15P</Text>
-                                </View>
-                            </View>
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Mate name="bag-personal"
+    //                                     color= "#502E9C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftNonActive}>BackPack (Sold Out)</Text>
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>99P</Text>
+    //                             </View>
+    //                         </View>
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Fo name="birthday-cake"
-                                        color= "#2F498C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
-                                    <Mate name="fire"
-                                        color= "#FF0000"
-                                        style={styles.iconFire} />
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>9P</Text>
-                                </View>
-                            </View>
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Ion name="logo-youtube"
+    //                                     color= "#FC0D1B"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Youtube Premium</Text>
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>18P</Text>
+    //                             </View>
+    //                         </View>
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Fo name="birthday-cake"
-                                        color= "#2F498C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
-                                    <Mate name="fire"
-                                        color= "#FF0000"
-                                        style={styles.iconFire} />
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>9P</Text>
-                                </View>
-                            </View>
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Mate name="desktop-mac"
+    //                                     color= "#2F498C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Macbook Pro 2022</Text>
+    //                                 <Mate name="fire"
+    //                                     color= "#FF0000"
+    //                                     style={styles.iconFire} />
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>17P</Text>
+    //                             </View>
+    //                         </View>
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Fo name="birthday-cake"
-                                        color= "#2F498C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
-                                    <Mate name="fire"
-                                        color= "#FF0000"
-                                        style={styles.iconFire} />
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>9P</Text>
-                                </View>
-                            </View>
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Icon name="feed-star"
+    //                                     color= "#66CC66"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftNonActive}>Starbucks (Sold Out)</Text>
+    //                                 <Mate name="fire"
+    //                                     color= "#FF0000"
+    //                                     style={styles.iconFire} />
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>15P</Text>
+    //                             </View>
+    //                         </View>
 
-                            <View style={styles.contentCard}>
-                                <View style={styles.nameGift}>
-                                    <Fo name="birthday-cake"
-                                        color= "#2F498C"
-                                        style={styles.iconGift} />
-                                    <Text style={styles.txtGiftActive}>Teramisu</Text>
-                                    <Mate name="fire"
-                                        color= "#FF0000"
-                                        style={styles.iconFire} />
-                                </View>
-                                <View style={styles.viewPoint}>
-                                    <Text style={styles.point}>9P</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Fo name="birthday-cake"
+    //                                     color= "#2F498C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Teramisu</Text>
+    //                                 <Mate name="fire"
+    //                                     color= "#FF0000"
+    //                                     style={styles.iconFire} />
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>9P</Text>
+    //                             </View>
+    //                         </View>
+
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Fo name="birthday-cake"
+    //                                     color= "#2F498C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Teramisu</Text>
+    //                                 <Mate name="fire"
+    //                                     color= "#FF0000"
+    //                                     style={styles.iconFire} />
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>9P</Text>
+    //                             </View>
+    //                         </View>
+
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Fo name="birthday-cake"
+    //                                     color= "#2F498C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Teramisu</Text>
+    //                                 <Mate name="fire"
+    //                                     color= "#FF0000"
+    //                                     style={styles.iconFire} />
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>9P</Text>
+    //                             </View>
+    //                         </View>
+
+    //                         <View style={styles.contentCard}>
+    //                             <View style={styles.nameGift}>
+    //                                 <Fo name="birthday-cake"
+    //                                     color= "#2F498C"
+    //                                     style={styles.iconGift} />
+    //                                 <Text style={styles.txtGiftActive}>Teramisu</Text>
+    //                                 <Mate name="fire"
+    //                                     color= "#FF0000"
+    //                                     style={styles.iconFire} />
+    //                             </View>
+    //                             <View style={styles.viewPoint}>
+    //                                 <Text style={styles.point}>9P</Text>
+    //                             </View>
+    //                         </View>
+    //                     </View>
+                   </View> */}
                 </View>
             </ScrollView>
 
@@ -273,8 +339,8 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "bold",
         width: "100%",
-        textAlign:'right',
-      
+        textAlign: 'right',
+
     },
     icon1: {
         color: "#426EF0",
@@ -356,7 +422,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItem: 'center',
         justifyContent: 'center',
-        paddingLeft:30,
+        paddingLeft: 30,
     },
     btn1: {
         alignItem: 'center',
@@ -450,60 +516,63 @@ const styles = StyleSheet.create({
         color: '#800080'
     },
     gift: {
-        borderRadius: 15,
+        // borderRadius: 15,
         width: 370,
         backgroundColor: 'white',
-        shadowColor: '#000',
-        shadowOffset: { width: 5, height: 0 },
-        shadowOpacity: 0.1,
-        shadowRadius: 7,
+        // shadowColor: '#000',
+        // shadowOffset: { width: 5, height: 0 },
+        // shadowOpacity: 0.1,
+        // shadowRadius: 7,
     },
-    card:{
-        alignItems: "center", 
-        margin: 20,
-    },
-    contentCard:{
-        padding: 20, 
-        alignItems: 'center', 
-        flexDirection: 'row', 
-        borderBottomWidth: 2, 
-        height: 80, 
+    card: {
+        alignItems: "center",
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomWidth: 2,
         borderBottomColor: '#EFF3FF'
     },
-    nameGift:{
-        width: '80%', 
-        alignItems: 'center', 
+    contentCard: {
+        padding: 20,
+        alignItems: 'center',
+        flexDirection: 'row',
+        // borderBottomWidth: 2,
+        height: 80,
+        // borderBottomColor: '#EFF3FF'
+    },
+    nameGift: {
+        width: '80%',
+        alignItems: 'center',
         flexDirection: 'row'
     },
-    iconGift:{
+    iconGift: {
         fontSize: 25,
         fontWeight: "bold",
         width: "15%",
     },
-    iconFire:{
+    iconFire: {
         fontSize: 25,
         marginLeft: 10,
         fontWeight: "bold",
         width: "15%",
     },
-    txtGiftActive:{
-        fontWeight: 'bold', 
-        fontSize: 14, 
+    txtGiftActive: {
+        fontWeight: 'bold',
+        fontSize: 14,
         color: 'black'
     },
-    txtGiftNonActive:{
-        opacity: 0.3, 
-        fontWeight: 'bold', 
-        fontSize: 14, 
+    txtGiftNonActive: {
+        opacity: 0.3,
+        fontWeight: 'bold',
+        fontSize: 14,
         color: 'black'
     },
-    viewPoint:{
-        alignItems:'flex-end', 
+    viewPoint: {
+        alignItems: 'flex-end',
         width: '20%'
     },
-    point:{
-        fontWeight: 'bold', 
-        fontSize: 14, 
+    point: {
+        fontWeight: 'bold',
+        fontSize: 14,
         color: '#FF6A62'
     },
 });

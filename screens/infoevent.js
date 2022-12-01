@@ -8,7 +8,7 @@ import Fo from "react-native-vector-icons/FontAwesome5";
 import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
-const EventScreen = ({ navigation }) => {
+const InfoEventScreen = ({ navigation }) => {
     const navigate = () => {
         navigation.navigate("ViewAll");
     };
@@ -17,13 +17,13 @@ const EventScreen = ({ navigation }) => {
             <ScrollView style={styles.scrollView}>
                 <View style={styles.header}>
                     <View style={styles.imgHeader}>
-                        <Image style={styles.imgAvatar}
+                        <Image style={styles.imgEvent}
                             source={{
-                                uri: "https://dep.com.vn/wp-content/uploads/2019/01/BLACKPINK-Lisa-New-Instagram-Profile-Picture-November-2018.jpg",
+                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/315857268_3396307810585044_601255144760363868_n.png?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=NcymoNYj1okAX-rGkoP&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfDMaIXiteg_2BYXmtOAsR5KLF53VfMoAhi_xmWe9xbCDg&oe=637F701E",
                             }}
                         />
                     </View>
-                    <View style={styles.sectionStyle}>
+                    {/* <View style={styles.sectionStyle}>
                         <Fo name="search" size={20} style={styles.imageStyle} />
                         <TextInput
                             style={{ flex: 1, color: 'white' }}
@@ -99,7 +99,7 @@ const EventScreen = ({ navigation }) => {
                     <Fo name='map-marker-alt' style={styles.iconMap} />
                     <Text style={styles.txtMap}>Cơ sở Thành Thái</Text>
                     </View>
-                    </View>     
+                    </View>      */}
                 </View>
 
 
@@ -109,7 +109,7 @@ const EventScreen = ({ navigation }) => {
     )
 }
     ;
-export default EventScreen;
+export default InfoEventScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -122,8 +122,7 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: 'black',
         justifyContent: 'center',
-        padding: 20,
-        flex: 2,
+        flex: 3,
 
     },
     main:{
@@ -227,7 +226,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     imgEvent:{
-        height: 200,
+        height: 300,
         width: '100%',
         resizeMode: "cover",
     },

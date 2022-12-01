@@ -10,12 +10,15 @@ import ProfileScreen from './screens/profile';
 import QRScreen from './screens/qr';
 import EditProfileScreen from './screens/editprofile';
 import EventScreen from './screens/event';
+import InfoEventScreen from './screens/infoevent';
+import store from "./redux/stores/store";
 export default function App() {
   return (
-    // <Provider>
-    //   <Navigation />
-    // </Provider>
-<EventScreen/>
+    <Provider store={store}> 
+      <GiftScreen />
+    </Provider>
+
+
   );
 }
 
