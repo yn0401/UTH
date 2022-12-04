@@ -14,6 +14,15 @@ const HomeScreen = ({ navigation }) => {
   const navigate = () => {
     navigation.navigate("ViewAll");
   };
+
+  const event = () => {
+    navigation.navigate("Event");
+  };
+
+  const profile = () => {
+    navigation.navigate("Profile");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -60,13 +69,13 @@ const HomeScreen = ({ navigation }) => {
           alignItems: "center",
         }}>
           <View style={styles.main}>
-            <TouchableOpacity style={styles.square} >
+            <TouchableOpacity onPress={profile} style={styles.square} >
               <Mate name="clipboard-account" style={styles.icon1} />
               <Text style={{ fontWeight: 'bold', fontSize: 15 }}>Account</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.square} >
-              <Mat name="report" style={styles.icon2} />
-              <Text style={{ fontWeight: 'bold', fontSize: 15 }}>Report</Text>
+            <TouchableOpacity onPress={event} style={styles.square} >
+              <Fo name="calendar-check" style={styles.icon2} />
+              <Text style={{ fontWeight: 'bold', fontSize: 15 }}>Event</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.square} >
               <Mate name="qrcode-scan" style={styles.icon3} />

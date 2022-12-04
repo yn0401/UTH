@@ -12,6 +12,8 @@ const ProfileScreen = ({ navigation }) => {
     const navigate = () => {
         navigation.navigate("ViewAll");
     };
+
+    
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
@@ -48,7 +50,7 @@ const ProfileScreen = ({ navigation }) => {
                     <Image
                         style={styles.imgCard}
                         source={{
-                            uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/313887721_3264199950495650_4192295597576375198_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=NIicZUU616oAX9SZ-A8&_nc_oc=AQn9_rFMasxMrAVJGnzuzXX0vSjhCb8AVPwdg2NRkweOFqa1NacmO2n9vqfvEzR4Y90&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfC328vI-ZajUWXqX8mPXp4dvTRvvADVeYLH1UQkbvQx_g&oe=6365FB3C",
+                            uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/313887721_3264199950495650_4192295597576375198_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=rNRUp2dovhEAX-tMgdU&_nc_oc=AQnXRFCCYl8Mwh8Wl9YnY8W8MYaf7Z9qXNSKThnQvmADeVsy-La7suumR8zt756MgxU&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfDWzz5sFepltHQEHXzpXvoaERL4FbQqX_sY-zL9St8Jbw&oe=638F827C",
                         }}
                     />
                     <View>

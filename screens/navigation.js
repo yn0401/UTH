@@ -6,16 +6,23 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./login";
 import ViewAll from "./viewAll";
 import MainScreen from "./viewAll";
-
+import EventScreen from "./event";
+import InfoEventScreen from "./infoevent";
 import GuestScreen from "./guest1";
+import ProfileScreen from "./profile";
+import TransactionDetailsScreen from "./transactiondetails";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
 const HomeNavigator = () => (
-  <Navigator screenOptions={{ headerShown: false }}>
-    <Screen name="Home" component={LoginScreen} />
-    <Screen name="Main" component={MainScreen} />
-    <Screen name="Guest" component={GuestScreen} />
+  <Navigator screenOptions={{ headerShown: true }}>
+    <Screen name="Home" component={LoginScreen} options={{ headerShown: false }}/>
+    <Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
+    <Screen name="Guest" component={GuestScreen} options={{ headerShown: false }}/>
+    <Screen name="Gift" component={TransactionDetailsScreen}  />
+    <Screen name="Event" component={EventScreen}/>
+    <Screen name="Profile" component={ProfileScreen}/>
+    <Screen name="InfoEvent" component={InfoEventScreen}/>
   </Navigator>
 );
 

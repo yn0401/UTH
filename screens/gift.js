@@ -27,9 +27,6 @@ import { useEffect } from "react";
 // }
 
 
-
-
-
 function GiftScreen ({ navigation })  {
 
     //step 2
@@ -45,9 +42,12 @@ function GiftScreen ({ navigation })  {
         console.log(data)
     }, [])
 
+    const navigateGift = () => {
+        navigation.navigate("Gift");
+    };
     const ListGift = ({ item }) => {
         return (
-            <TouchableOpacity>
+            <TouchableOpacity >
                 <View style={styles.card} key={item.id}>
                     <View style={styles.gift}>
                         <View style={styles.contentCard}>
@@ -63,6 +63,10 @@ function GiftScreen ({ navigation })  {
                             <View style={styles.viewPoint}>
                                 <Text style={styles.point}>{item.point}P</Text>
                             </View>
+
+                            <Mate name='gift'
+                                color='red'
+                                style={styles.iconGift1} />
                         </View>
                     </View>
                 </View>
@@ -108,7 +112,7 @@ function GiftScreen ({ navigation })  {
 
 
                     <View style={styles.button}>
-                        <TouchableOpacity style={styles.btn1}>
+                        <TouchableOpacity onPress={navigateGift} style={styles.btn1}>
                             <Text style={styles.btnText1}>All</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.btn2}>
@@ -127,7 +131,7 @@ function GiftScreen ({ navigation })  {
                             <View style={{ marginLeft: 30, width: '50%' }}>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>Filter(P)</Text>
                             </View>
-                            <View style={{ alignItems: 'flex-end', width: '25%', flexDirection: 'row' }}>
+                            <View style={{ alignItems: 'flex-end', width: '35%', flexDirection: 'row' }}>
                                 <Fo name="arrow-alt-circle-down" style={styles.icon} />
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: 'black' }}>DSC</Text>
                             </View>
@@ -135,7 +139,6 @@ function GiftScreen ({ navigation })  {
                     </View>
 
                     <FlatList
-
                         keyExtractor={(item) => item.id}
                         data={db.gifts}
                         renderItem={ListGift}
@@ -536,17 +539,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         // borderBottomWidth: 2,
-        height: 80,
+        height: 90,
         // borderBottomColor: '#EFF3FF'
     },
     nameGift: {
-        width: '80%',
+        width: '70%',
         alignItems: 'center',
         flexDirection: 'row'
     },
     iconGift: {
         fontSize: 25,
         fontWeight: "bold",
+        width: "15%",
+    },
+    iconGift1: {
+        fontSize: 25,
+        fontWeight: "bold",
+        marginLeft:10,
         width: "15%",
     },
     iconFire: {

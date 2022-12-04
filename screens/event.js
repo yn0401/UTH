@@ -12,6 +12,10 @@ const EventScreen = ({ navigation }) => {
     const navigate = () => {
         navigation.navigate("ViewAll");
     };
+
+    const info = () => {
+        navigation.navigate("InfoEvent");
+    };
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
@@ -62,10 +66,10 @@ const EventScreen = ({ navigation }) => {
                 </View>
                 <View style={styles.main}>
                     <Text style={{color: '#808080', fontSize:16,}}>This Weekend</Text>
-                    <View style={styles.event}>
+                    <TouchableOpacity onPress={info} style={styles.event}>
                     <Image style={styles.imgEvent}
                             source={{
-                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/315857268_3396307810585044_601255144760363868_n.png?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=NcymoNYj1okAX-rGkoP&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfDMaIXiteg_2BYXmtOAsR5KLF53VfMoAhi_xmWe9xbCDg&oe=637F701E",
+                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/317550139_3405090839706741_6665726607969878686_n.png?stp=dst-png_p960x960&_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_ohc=GHm8mRGrfF4AX-WrVsa&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfCArY01TeM2UB2Kx8CEV9_pkBmfzt5NaTClKIJ05Au8Ww&oe=6390800A",
                             }}
                         />  
                     <Text style={styles.nameEvent}>CUỘC THI MOBILE GAME CHALLENGE 2022 MOBILE GAME</Text>
@@ -73,12 +77,12 @@ const EventScreen = ({ navigation }) => {
                     <Fo name='map-marker-alt' style={styles.iconMap} />
                     <Text style={styles.txtMap}>Đại Học Hoa Sen</Text>
                     </View>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.event}>
+                    <TouchableOpacity onPress={info} style={styles.event}>
                     <Image style={styles.imgEvent}
                             source={{
-                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/315541345_449625487292960_9054923741286163368_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=foUeWCtdAt8AX8jJa93&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfAlJn55gPOjEtgTFotRFSEW-x1ijOQ7UaQ7V7R58zxMsA&oe=637E07A0",
+                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/315750176_3399435150272310_4999432971186367577_n.jpg?stp=dst-jpg_p960x960&_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=O915aHWEpMgAX8MarhF&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfDW_4FzytXkg1xjrlJ4IgmUSbSfeuamI_1bkv08CxMaJA&oe=6390F250",
                             }}
                         />  
                     <Text style={styles.nameEvent}>HỘI THẠO KIẾN TRÚC ĐÔ THỊ THÔNG MINH</Text>
@@ -86,12 +90,12 @@ const EventScreen = ({ navigation }) => {
                     <Fo name='map-marker-alt' style={styles.iconMap} />
                     <Text style={styles.txtMap}>Hội trường 903 - Cơ sở Nguyễn Văn Tráng</Text>
                     </View>
-                    </View>     
+                    </TouchableOpacity>     
 
-                    <View style={styles.event}>
+                    <TouchableOpacity onPress={info} style={styles.event}>
                     <Image style={styles.imgEvent}
                             source={{
-                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/313414478_428971789405243_5807290521260914488_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=730e14&_nc_ohc=v6GFki_mKUYAX-esRSw&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfCMxxVfAFcs_UcloSQaYnFDpY0UmEj7CEetBNhFY7Jqbg&oe=637FCDE8",
+                                uri: "https://scontent.fsgn19-1.fna.fbcdn.net/v/t39.30808-6/315082966_431636329138789_8936378990191417687_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=vJ5UXDnAv8UAX8d8Rky&tn=krkdQIYm3B3J44nq&_nc_ht=scontent.fsgn19-1.fna&oh=00_AfDebhCopozBSVHsRcxci0WxpTGvBB0GbdSfx3NJq7ej0A&oe=63905782",
                             }}
                         />  
                     <Text style={styles.nameEvent}>(MEETING) CAFE CODE</Text>
@@ -99,7 +103,7 @@ const EventScreen = ({ navigation }) => {
                     <Fo name='map-marker-alt' style={styles.iconMap} />
                     <Text style={styles.txtMap}>Cơ sở Thành Thái</Text>
                     </View>
-                    </View>     
+                    </TouchableOpacity>     
                 </View>
 
 
@@ -145,7 +149,7 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
-        marginRight: "5px",
+        marginRight: 5,
         marginBottom: 20
     },
     title: {

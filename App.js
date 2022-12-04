@@ -12,10 +12,11 @@ import EditProfileScreen from './screens/editprofile';
 import EventScreen from './screens/event';
 import InfoEventScreen from './screens/infoevent';
 import store from "./redux/stores/store";
+import TransactionDetailsScreen from './screens/transactiondetails';
 export default function App() {
   return (
     <Provider store={store}> 
-      <GiftScreen />
+    <Navigation/>
     </Provider>
 
 
