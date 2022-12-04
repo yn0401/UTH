@@ -29,33 +29,33 @@ export const fetchAll = () => {
   };
 };
 
-// export const addGift = (gift) => {
-//   return {
-//     type: add,
-//     payload: gift,
-//   };
-// };
+export const addGift = (gift) => {
+  return {
+    type: add,
+    payload: gift,
+  };
+};
 
-// export const addGiftToFB = (gift) => {
-//   return (dispatch) => {
-//     const addData = async () => {
-//       try {
-//         const res = await fetch("http://localhost:3000/gifts/add", {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify(gift),
-//         });
-//         const data = await res.json();
-//         dispatch(addGift(data));
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-//     addData();
-//   };
-// };
+export const addGiftToFB = (gift) => {
+  return (dispatch) => {
+    const addData = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/gifts/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(gift),
+        });
+        const data = await res.json();
+        dispatch(addGift(data));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    addData();
+  };
+};
 
 // export const updateGift = (gift) => {
 //   return {

@@ -13,10 +13,11 @@ import EventScreen from './screens/event';
 import InfoEventScreen from './screens/infoevent';
 import store from "./redux/stores/store";
 import TransactionDetailsScreen from './screens/transactiondetails';
+import AddScreen from './screens/add';
 export default function App() {
   return (
     <Provider store={store}> 
-    <Navigation/>
+  <Navigation/>
     </Provider>
 
 

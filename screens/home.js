@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, Image, View, TouchableOpacity, SafeAreaView, ScrollView } from "react-native";
+import { Text, StyleSheet, Image, View, TouchableOpacity, SafeAreaView, ScrollView, FlatList } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/Octicons";
@@ -9,6 +9,26 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 
+const items=[
+  {   id:1,
+      name: 'Quan AP',
+      img: 'https://wikiaz.net/wp-content/uploads/2019/03/oppa-han-quoc.jpg',
+      imgRole: 'https://media.istockphoto.com/vectors/prom-crown-icon-on-transparent-background-vector-id1283621184?k=20&m=1283621184&s=170667a&w=0&h=QDKKu214swaBGS5WGV-rWFw_qFn5YbxGbnHd8NlqhfM=',
+      point: 9914542342
+  },
+  {   id:2,
+      name: 'Elmanuel',
+      img: 'https://vcdn1-giaitri.vnecdn.net/2020/03/29/991816090-56782878-2.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=FalyTpb6BDBE3vFkujJ-TQ',
+      imgRole: 'https://media.istockphoto.com/vectors/prom-crown-icon-on-transparent-background-vector-id1283621184?k=20&m=1283621184&s=170667a&w=0&h=QDKKu214swaBGS5WGV-rWFw_qFn5YbxGbnHd8NlqhfM=',
+      point: 834432423
+  },
+  {   id:3,
+      name: 'Duc Tran',
+      img: 'https://6.vikiplatform.com/image/cb3c8f9323e74dd883e13b68311844ff.jpg?x=b&a=0x0&s=590x330&q=h&e=t&f=t&cb=1',
+      imgRole: 'https://media.istockphoto.com/vectors/prom-crown-icon-on-transparent-background-vector-id1283621184?k=20&m=1283621184&s=170667a&w=0&h=QDKKu214swaBGS5WGV-rWFw_qFn5YbxGbnHd8NlqhfM=',
+      point: 9999999
+  }
+]
 
 const HomeScreen = ({ navigation }) => {
   const navigate = () => {
@@ -22,6 +42,35 @@ const HomeScreen = ({ navigation }) => {
   const profile = () => {
     navigation.navigate("Profile");
   };
+
+
+  const ListMember = ({item}) => {
+    return (
+      <TouchableOpacity style={styles.main2}>
+      <View style={styles.member}>
+        <View style={styles.mem}>
+          <View style={styles.imgMem}>
+            <Image
+              style={styles.avaMem}
+              source={{uri: item.img}}
+            />
+            <Text style={styles.nameMem}>{item.name}</Text>
+            <Image
+              style={styles.roleImg}
+              source={{
+                uri: item.imgRole,
+              }}
+            />
+          </View>
+          <View style={styles.point}>
+            <Text style={styles.txtPoint}>{item.point} P </Text>
+          </View>
+        </View>
+  </View>
+</TouchableOpacity>
+    );
+};
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -95,7 +144,12 @@ const HomeScreen = ({ navigation }) => {
             </View>
 
           </View>
-          <View style={styles.main2}>
+          <FlatList
+                        data={items}
+                        renderItem={ListMember}
+                    />
+
+          {/* <View style={styles.main2}>
             <View style={styles.member}>
               <View style={styles.mem}>
                 <View style={styles.imgMem}>
@@ -197,8 +251,8 @@ const HomeScreen = ({ navigation }) => {
 
 
 
-            </View>
-          </View>
+            </View> */}
+          {/* </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -364,7 +418,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 370,
     height: 60,
-    borderRadius: 8,
+    // borderRadius: 8,
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: "center",
@@ -375,24 +429,30 @@ const styles = StyleSheet.create({
   },
 
   main2: {
-    marginTop: 20,
+    // marginTop: 20,
     width: 370,
     height: '100%',
-    borderRadius: 8,
+    // borderRadius: 8,
     backgroundColor: 'white',
-    shadowColor: '#000',
-    shadowOffset: { width: -2, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
+    // shadowColor: '#000',
+    // shadowOffset: { width: -2, height: 3 },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 8,
   },
   member: {
     borderRadius: 15,
     width: 370,
     backgroundColor: 'white',
-    shadowColor: '#000',
-    shadowOffset: { width: 5, height: 0 },
-    shadowOpacity: 0.1,
-    shadowRadius: 7,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 5, height: 0 },
+    // shadowOpacity: 0.1,
+    // shadowRadius: 7,
+
+    //new
+    // shadowColor: '#000',
+    // shadowOffset: { width: -1, height: 1 },
+    // shadowOpacity: 0.1,
+    // shadowRadius: 1,
   },
   mem: {
     padding: 10,

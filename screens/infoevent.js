@@ -6,6 +6,9 @@ import Fo from "react-native-vector-icons/FontAwesome5";
 import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
+
+
+
 const InfoEventScreen = ({ navigation }) => {
     const navigate = () => {
         navigation.navigate("ViewAll");
@@ -38,10 +41,6 @@ const InfoEventScreen = ({ navigation }) => {
                                 <Text style={styles.time1}>9h50</Text>
                             </View>
                         </View>
-                        <View style={styles.view4}
-                        />
-                        <View style={styles.view5}
-                        />
                     </View>
 
                     <TouchableOpacity style={styles.checkin}
