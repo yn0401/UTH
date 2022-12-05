@@ -14,8 +14,7 @@ const InfoEventScreen = ({ navigation }) => {
         navigation.navigate("ViewAll");
     };
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
+
                 <View style={styles.container1}>
                     <View style={styles.view1}>
                         <View style={styles.view2}
@@ -49,8 +48,7 @@ const InfoEventScreen = ({ navigation }) => {
                        
                     </TouchableOpacity>
                 </View>    
-            </ScrollView>
-        </SafeAreaView>
+           
     )
 }
     ;
@@ -63,6 +61,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     container1: {
+        flex:1,
+        backgroundColor: "white",
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -78,14 +78,13 @@ const styles = StyleSheet.create({
     view1: {
         paddingLeft: 30,
         paddingRight: 30,
-        marginTop:20,
         marginLeft: 30,
         marginRight: 30,
-        width: 350,
-        height: 500,
-        backgroundColor: "#23145b",
+        width: '100%',
+        height: 650,
+        backgroundColor: "#426ef0",
         borderRadius: 8,
-        borderBottomWidth: 1,
+    
         // borderStyle: 'dashed',
         borderColor: '#555555',
         borderTopColor: 'white',
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
         height: 30
     },
     checkin: {
-        marginTop: 40,
+        marginTop: 20,
         padding: 10,
         height: 50,
         width: 230,

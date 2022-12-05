@@ -64,6 +64,7 @@ const EventScreen = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.header}>
+                    <Text style={styles.txt}>Exceeding Event Expectations</Text>
                     <View style={styles.imgHeader}>
                         <Image style={styles.imgAvatar}
                             source={{
@@ -71,15 +72,15 @@ const EventScreen = ({ navigation }) => {
                             }}
                         />
                     </View>
-                    <View style={styles.sectionStyle}>
+                    {/* <View style={styles.sectionStyle}>
                         <Fo name="search" size={20} style={styles.imageStyle} />
                         <TextInput
                             style={{ flex: 1, color: 'white' }}
                             placeholder="Search . . ."
                             underlineColorAndroid="transparent"
                         />
-                    </View>
-                    <View style={styles.button}>
+                    </View> */}
+                    {/* <View style={styles.button}>
                         <TouchableOpacity
                             style={styles.btn}
                             onPress={info}
@@ -107,7 +108,7 @@ const EventScreen = ({ navigation }) => {
                                 Blockchain
                             </Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
                 </View>
                 {/* <Text style={{ color: '#808080', fontSize: 16, }}>This Weekend</Text> */}
                 <FlatList
@@ -174,11 +175,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     header: {
-        backgroundColor: 'black',
+        backgroundColor: '#426ef0',
         justifyContent: 'center',
+        alignItems:'center',
+        flexDirection:'row',
         padding: 20,
         flex: 2,
-        marginBottom: 45,
+        marginBottom: 10,
     },
     main: {
         marginBottom: 10,
@@ -186,10 +189,17 @@ const styles = StyleSheet.create({
         marginRight: 20,
 
     },
+    txt:{
+        width: '85%',
+        fontSize: 32,
+        alignItems:'flex-start',
+        color: 'white',
+        fontWeight:'bold',
+    },
     imgHeader: {
         justifyContent: 'center',
-        alignItems: 'flex-end',
-        marginTop: 20,
+        alignItems:'center',
+        marginTop: 0,
     },
     name: {
         justifyContent: 'center',
@@ -199,12 +209,11 @@ const styles = StyleSheet.create({
     },
     imgAvatar: {
         justifyContent: 'center',
-        alignItems: 'flex-end',
+        alignItems:'center',
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
         marginRight: 5,
-        marginBottom: 20
     },
     title: {
         justifyContent: 'center',
@@ -259,14 +268,14 @@ const styles = StyleSheet.create({
     btn: {
         paddingVertical: 10,
         paddingHorizontal: 20,
-        top: 40,
+        top: 0,
         borderRadius: 20,
         // justifyContent:'center',
         // alignItems:'center',
         // width: 80,
         // height: 30,
         flexDirection: 'row',
-        backgroundColor: '#FF6A62',
+        backgroundColor: '#23145b',
         marginRight: 15,
     },
     iconEvent: {

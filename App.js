@@ -17,7 +17,7 @@ import AddScreen from './screens/add';
 export default function App() {
   return (
     <Provider store={store}> 
-  <Navigation/>
+<Navigation/>
     </Provider>
 
 

@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     text1: {
-        marginTop: 40,
+        marginTop: 20,
         marginBottom: 20,
         fontSize: 20,
         fontWeight: "bold",
