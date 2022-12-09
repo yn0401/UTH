@@ -82,9 +82,9 @@ function GiftScreen ({ navigation })  {
                         <Text style={{ color: 'white', fontSize: 34, fontWeight: 'bold' }}>Gift</Text>
                         <View style={{ marginLeft: 130, flexDirection: 'row' }}>
                             <View style={styles.square1} >
-                                <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
+                                {/* <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
                                     <Fo name="shopping-basket" style={styles.icon3} />
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                             <View style={styles.square1} >
                                 <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>

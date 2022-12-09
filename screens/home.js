@@ -105,8 +105,8 @@ const HomeScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.window2}>
                   <Fo name="crown" style={styles.icon} />
                   <View style={{ paddingLeft: 10, flexDirection: 'column' }}>
-                    <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'medium' }}>Remaning Points</Text>
-                    <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'bold' }}>1253544</Text>
+                    <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'medium' }}>Mamber Date</Text>
+                    <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'bold' }}>22-02-2022</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -114,7 +114,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
         <View style={{
-          flex: 7, top: 90, justifyContent: 'center',
+          flex: 7, top: 70, justifyContent: 'center',
           alignItems: "center",
         }}>
           <View style={styles.main}>
@@ -270,8 +270,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   header: {
-    flex:2,
-    // height: 160,
+    // flex:2,
+    height: 170,
     backgroundColor: "#426ef0",
     width: "100%",
     padding: 20,
