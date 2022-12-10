@@ -14,7 +14,7 @@ app.listen(3000, function () {
 const { db } = require('./config/admin')
 
 //---------------------------------------------------------------------------------------------------------GIFT------------------------------------------------------------------------------------------------//
-//get all gifts with latest
+//get all gifts
 app.get("/gifts", async (req, res) => {
     //gọi về firebase
     const giftRef = db.collection('gifts');
@@ -183,23 +183,23 @@ app.put("/gifts/update/:id", async (req, res) => {
 });
 
 // //search gift
-// app.get("/gifts/search/:name", async (req, res) => {
-//     const ref = db.collection("gifts");
-//     const name = req.params.name;
-//     // console.log(name);
-//     try {
-//         ref.where("name", "==", name).get().then((snapshot) => {
-//             const data = snapshot.docs.map((doc) => ({
-//                 id: doc.id,
-//                 ...doc.data(),
-//             }));
-//             console.log(`Gifts total were searched by keyword(${name}): ${data.length}}`);
-//             res.status(201).json(data);
-//         });
-//     } catch (error) {
-//         res.status(500).json({ general: "Something went wrong, please try again" });
-//     }
-// });
+app.get("/gifts/search/:name", async (req, res) => {
+    const ref = db.collection("gifts");
+    const name = req.params.name;
+    // console.log(name);
+    try {
+        ref.where("name", "==", name).get().then((snapshot) => {
+            const data = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            console.log(`Gifts total were searched by keyword(${name}): ${data.length}}`);
+            res.status(201).json(data);
+        });
+    } catch (error) {
+        res.status(500).json({ general: "Something went wrong, please try again" });
+    }
+});
 
 //---------------------------------------------------------------------------------------------------------MEMBER------------------------------------------------------------------------------------------------//
 //get all members
@@ -439,7 +439,7 @@ app.get("/events", async (req, res) => {
     }
 });
 
-//get transaction detail by id
+//get events detail by id
 app.get("/events/:id", async (req, res) => {
     const ref = db.collection("events");
     const id = req.params.id;
@@ -454,7 +454,7 @@ app.get("/events/:id", async (req, res) => {
     }
 });
 
-//add new transaction
+//add new events
 app.post("/events/add", async (req, res) => {
     const ref = db.collection("events");
     const data = req.body;
@@ -467,20 +467,20 @@ app.post("/events/add", async (req, res) => {
     }
 });
 
-//delete transaction
+//delete events
 app.delete("/events/delete/:id", async (req, res) => {
     const ref = db.collection("events");
     const id = req.params.id;
     try {
         ref.doc(id).delete();
         console.log(`Delete event with id:${id} successfull`);
-        res.status(201).json({ message: "Transaction deleted successfully" });
+        res.status(201).json({ message: "Events deleted successfully" });
     } catch (error) {
         res.status(500).json({ general: "Something went wrong, please try again" });
     }
 });
 
-//update transaction
+//update events
 app.put("/events/update/:id", async (req, res) => {
     const ref = db.collection("events");
     const id = req.params.id;
@@ -488,7 +488,7 @@ app.put("/events/update/:id", async (req, res) => {
     try {
         ref.doc(id).set(data);
         console.log(`Update event info with id:${id} successfull`);
-        res.status(201).json({ message: "Transactions updated successfully" });
+        res.status(201).json({ message: "Events updated successfully" });
     } catch (error) {
         res.status(500).json({ general: "Something went wrong, please try again" });
     }
