@@ -65,13 +65,10 @@ const EventScreen = ({ navigation }) => {
             <ScrollView style={styles.scrollView}>
                 <View style={styles.header}>
                     <Text style={styles.txt}>Exceeding Event Expectations</Text>
-                    <View style={styles.imgHeader}>
-                        <Image style={styles.imgAvatar}
-                            source={{
-                                uri: "https://dep.com.vn/wp-content/uploads/2019/01/BLACKPINK-Lisa-New-Instagram-Profile-Picture-November-2018.jpg",
-                            }}
-                        />
-                    </View>
+                    
+                    <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
+                                    <Fo name="plus" style={styles.icon3} />
+                    </TouchableOpacity>
                     {/* <View style={styles.sectionStyle}>
                         <Fo name="search" size={20} style={styles.imageStyle} />
                         <TextInput
@@ -320,5 +317,14 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
-    }
+    },
+    icon3: {
+        color: "#426ef0",
+        fontSize: 25,
+        fontWeight: "bold",
+        width: "100%",
+        textAlign: 'center',
+        alignItems: "center",
+        justifyContent: "center",
+    },
 });

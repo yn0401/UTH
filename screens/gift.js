@@ -52,9 +52,12 @@ function GiftScreen ({ navigation })  {
                     <View style={styles.gift}>
                         <View style={styles.contentCard}>
                             <View style={styles.nameGift}>
-                                <Mate name={item.iconname}
-                                    color={item.color}
-                                    style={styles.iconGift} />
+                                <Image
+                                    style={styles.iconGift}
+                                    source={{
+                                        uri: item.imageURL,
+                                    }}
+                                />
                                 <Text style={styles.txtGiftActive}>{item.name}</Text>
                                 <Mate name={item.icon}
                                         color= {item.colorfire}
@@ -82,9 +85,9 @@ function GiftScreen ({ navigation })  {
                         <Text style={{ color: 'white', fontSize: 34, fontWeight: 'bold' }}>Gift</Text>
                         <View style={{ marginLeft: 130, flexDirection: 'row' }}>
                             <View style={styles.square1} >
-                                {/* <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
-                                    <Fo name="shopping-basket" style={styles.icon3} />
-                                </TouchableOpacity> */}
+                                <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
+                                    <Fo name="plus" style={styles.icon3} />
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.square1} >
                                 <TouchableOpacity style={{ marginLeft: 10, height: 40, width: 40, borderRadius: 40 / 2, backgroundColor: 'white', textAlign: 'center', justifyContent: "center", alignItems: "center" }}>
@@ -100,7 +103,10 @@ function GiftScreen ({ navigation })  {
                     </View>
                 </View>
                 <View style={styles.content}>
+                    <View style={{flexDirection: 'row'}}>
                     <Text style={{ marginTop: 20, marginLeft: 20, marginBottom: 3, fontSize: 20, color: '#888888', fontWeight: 'bold' }}>Remaining Point</Text>
+                    </View>
+                    
                     <View style={{ flexDirection: 'row', width: '100%' }}>
                         <View style={{ marginLeft: 20, width: '30%' }}>
                             <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#426ef0' }}>1253544</Text>
@@ -550,7 +556,12 @@ const styles = StyleSheet.create({
     iconGift: {
         fontSize: 25,
         fontWeight: "bold",
-        width: "15%",
+        width: 50,
+        height: 50,
+        marginRight:10,
+        borderRadius:5,
+        borderWidth:2,
+        borderColor:'black'
     },
     iconGift1: {
         fontSize: 25,

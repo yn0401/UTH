@@ -19,7 +19,7 @@ const navigate1 = () => {
         <Image
           style={styles.img}
           source={{
-            uri: "https://scontent.xx.fbcdn.net/v/t1.15752-9/310339140_423710913141384_5313094900728762288_n.png?_nc_cat=110&ccb=1-7&_nc_sid=aee45a&_nc_ohc=jsNrgZjWO_sAX_M7X73&_nc_ht=scontent.xx&oh=03_AdS7orH55pLPsX6uY6NKxQTHa0MHIx7Bo51pmXlTB_jacA&oe=637D0655",
+            uri: "https://as2.ftcdn.net/v2/jpg/02/78/41/91/1000_F_278419195_XyHPPySaxCaAMfUpoCjaze47tQ8tqJ5E.jpg",
           }}
         />
         <Text style={styles.title}>UNDER THE HOOD</Text>
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: 'white'
   },
   content: {
     alignItems: "center",

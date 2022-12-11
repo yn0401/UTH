@@ -46,11 +46,11 @@ const AddScreen = ({ params, }) => {
     };
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Add New Gift</Text>
+            <Text style={styles.title}>Update Member</Text>
             <Image
                 style={styles.image}
                 source={{
-                    uri: 'https://dep.com.vn/wp-content/uploads/2019/01/BLACKPINK-Lisa-New-Instagram-Profile-Picture-November-2018.jpg',
+                    uri: 'https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2019/11/20/767168/5Dd2bbeed3b9c.jpg',
                 }}
             />
             <TouchableOpacity style={styles.button}>
@@ -63,7 +63,7 @@ const AddScreen = ({ params, }) => {
 
                     <TextInput
                         style={styles.InputText}
-                        placeholder="Name Gift"
+                        placeholder="Ngọc A"
                     // value={value}
                         onChangeText={
                         (value) => setName(value)
@@ -72,7 +72,7 @@ const AddScreen = ({ params, }) => {
                     />
                     <TextInput
                         style={styles.InputText}
-                        placeholder="Icon Gift"
+                        placeholder="Member"
                     // value={value}
                     onChangeText={
                         (value) => setIconGift(value)
@@ -80,7 +80,7 @@ const AddScreen = ({ params, }) => {
                     />
                     <TextInput
                         style={styles.InputText}
-                        placeholder="Color Icon Gift"
+                        placeholder="1/1/2001"
                     // value={value}
                     onChangeText={
                         (value) => setColorIcon(value)
@@ -88,7 +88,7 @@ const AddScreen = ({ params, }) => {
                     />
                     <TextInput
                         style={styles.InputText}
-                        placeholder="Icon Fire"
+                        placeholder="22/12/2022"
                     // value={value}
                     onChangeText={
                         (value) => setIconFire(value)
@@ -96,7 +96,7 @@ const AddScreen = ({ params, }) => {
                     />
                     <TextInput
                         style={styles.InputText}
-                        placeholder="Color Icon Fire"
+                        placeholder="2132"
                     // value={value}
                     onChangeText={
                         (value) => setColorIconFire(value)
@@ -104,14 +104,14 @@ const AddScreen = ({ params, }) => {
                     />
                     <TextInput
                         style={styles.InputText}
-                        placeholder="Point"
+                        placeholder="10321"
                     // value={value}
                     onChangeText={
                         (value) => setPoint(value)
                       }
                     />
                     <TouchableOpacity  style={styles.button} >
-                        <Text style={styles.buttonText}>Add</Text>
+                        <Text style={styles.buttonText}>Update</Text>
                         
                     </TouchableOpacity>
                 </View>
@@ -147,10 +147,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     title: {
-        marginBottom: 40,
+        marginBottom: 10,
         fontSize: 30,
         fontWeight: "bold",
         textTransform: "uppercase",
+        justifyContent: 'center',
+        alignItems:'center'
     },
     btn: {
         marginTop: 20,

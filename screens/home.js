@@ -88,7 +88,7 @@ const HomeScreen = ({ navigation }) => {
               </View>
               <View styles={styles.info}>
                 <Text style={styles.name}>Đặng Ngọc Yến Nhi</Text>
-                <Text style={styles.role}>Role</Text>
+                <Text style={styles.role}>Member</Text>
               </View>
             </View>
             <View style={styles.show}>
@@ -105,7 +105,7 @@ const HomeScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.window2}>
                   <Fo name="crown" style={styles.icon} />
                   <View style={{ paddingLeft: 10, flexDirection: 'column' }}>
-                    <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'medium' }}>Mamber Date</Text>
+                    <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'medium' }}>Member Date</Text>
                     <Text style={{ color: "#426EF0", fontSize: 15, fontWeight: 'bold' }}>22-02-2022</Text>
                   </View>
                 </TouchableOpacity>
@@ -139,9 +139,9 @@ const HomeScreen = ({ navigation }) => {
               }}
             />
             <Text style={{ fontSize: 15, fontWeight: 'bold' }}> Leaderboard </Text>
-            <View style={{ width: 180 }}>
-              <Ion style={{ textAlign: 'right' }} size={30} name="chevron-down-outline" />
-            </View>
+            <TouchableOpacity style={{ width: 180 }}>
+              <Ion style={{ textAlign: 'right' }} size={30} name="add-ouline" />
+            </TouchableOpacity>
 
           </View>
           <FlatList
