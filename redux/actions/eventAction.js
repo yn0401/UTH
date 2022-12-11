@@ -1,5 +1,4 @@
-import IPConfig from "../../config/ipConfig";
-
+export const IPConfig = "192.168.1.4";
 export const getAll = "getAll";
 export const getByID = "getByID";
 export const addNew = "create";

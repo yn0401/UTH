@@ -1,4 +1,4 @@
-import IPConfig from "../../config/ipConfig";
+// import IPConfig from "../../config/ipConfig";
 
 export const getAll = "getAll";
 export const getLatest = "getLatest";
@@ -11,6 +11,9 @@ export const update = "update";
 export const deleteGift = "deleteGift";
 export const search = "search";
 
+export const IPConfig = "192.168.1.4";
+
+
 export const getAllGift = (gifts) => {
   return {
     type: getAll,
@@ -18,7 +21,7 @@ export const getAllGift = (gifts) => {
   };
 };
 
-export const fecthAll = () => {
+export const fetchAll = () => {
   return (dispatch) => {
     const getAll = async () => {
       try {
@@ -249,12 +252,15 @@ export const fecthDelete = (id) => {
   return (dispatch) => {
     const deleteOne = async () => {
       try {
-        const res = await fetch(`http://` + IPConfig + `:3000/gifts/delete/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const res = await fetch(
+          `http://` + IPConfig + `:3000/gifts/delete/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         const giftData = await res.json();
         dispatch(deleteOne(giftData));
       } catch (error) {
