@@ -18,7 +18,7 @@ import LoginScreen from "./login";
 
 const ProfileScreen = ({ navigation }) => {
   const navigate = () => {
-    navigation.navigate("ViewAll");
+    navigation.navigate("Home");
   };
 
   return (

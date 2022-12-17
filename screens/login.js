@@ -1,68 +1,103 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Text, View, TextInput } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
+import TextInput from "../components/TextInput";
+// import { TextInput } from "react-native";
 import { useState } from "react";
+import { emailValidator } from '../helpers/emailValidator';
+import { passwordValidator } from '../helpers/passwordValidator';
 import QRScreen from "./qr";
+import BackButton from "../components/BackButton";
 
 
 const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState({ value: '', error: '' })
+  const [password, setPassword] = useState({ value: '', error: '' })
 
-  const navigate = () => {
-    navigation.navigate("Main");
-  };
-
-  const navigate1 = () => {
+  const navigateToGuest = () => {
     navigation.navigate("Guest");
   };
 
-  const [email, onChangeEmail] = useState("");
-  const [password, onChangePassword] = useState("");
+  const onLoginPressed = () => {
+    const emailError = emailValidator(email.value)
+    const passwordError = passwordValidator(password.value)
+    if (emailError || passwordError) {
+      setEmail({ ...email, error: emailError })
+      setPassword({ ...password, error: passwordError })
+      return
+    }
+    navigation.navigate("Main");
+  }
 
   return (
     <View style={styles.container}>
+      <BackButton goBack={navigation.goBack} />
       <View style={styles.content}>
-        <Image
-          style={styles.img}
-          source={{
-            uri: "https://as2.ftcdn.net/v2/jpg/02/78/41/91/1000_F_278419195_XyHPPySaxCaAMfUpoCjaze47tQ8tqJ5E.jpg",
-          }}
-        />
         <Text style={styles.title}>UNDER THE HOOD</Text>
-        <Text style={styles.subTitle}>Membership Gift Exchange App</Text>
+        <Text style={styles.subTitle}>SIGN IN</Text>
       </View>
-      <View>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeEmail}
-          value={email}
-          placeholder="Email"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangePassword}
-          value={password}
-          placeholder="Password"
-          keyboardType="password"
-        />
-      </View>
-      <View>
-        <TouchableOpacity onPress={navigate} style={styles.button}>
+
+      <TextInput
+        label="Email"
+        returnKeyType="next"
+        // style={styles.input}
+        value={email.value}
+        onChangeText={(text) => setEmail({ value: text, error: '' })}
+        error={!!email.error}
+        errorText={email.error}
+        autoCapitalize="none"
+        autoCompleteType="email"
+        textContentType="emailAddress"
+        keyboardType="email-address"
+        placeholder='Email'
+      />
+
+
+      <TextInput
+        label="Password"
+        returnKeyType="done"
+        // style={styles.input}
+        onChangeText={(text) => setPassword({ value: text, error: '' })}
+        value={password.value}
+        error={!!password.error}
+        errorText={password.error}
+        secureTextEntry
+        placeholder='Password'
+      />
+
+      <View style={{ marginTop: 20 }}>
+        <TouchableOpacity onPress={onLoginPressed} style={styles.button}>
           <Text style={styles.btn}>Sign in</Text>
           <Icon name="arrow-right" style={styles.icon} />
         </TouchableOpacity>
       </View>
+      <View style={styles.row}>
+        <Text>Don’t have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.replace('Register')}>
+          <Text style={styles.link}>Sign up</Text>
+        </TouchableOpacity>
+      </View>
       <View style={{ marginTop: 20 }}>
-        <TouchableOpacity onPress={navigate1} style={styles.button}>
+        <TouchableOpacity onPress={navigateToGuest} style={styles.button}>
           <Text style={styles.btn}>Guest</Text>
           <Icon name="arrow-right" style={styles.icon} />
         </TouchableOpacity>
       </View>
     </View>
+
   );
 };
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+  link: {
+    fontWeight: 'bold',
+    color: '#426ef0',
+  },
   input: {
     width: 300,
     alignItems: "center",
