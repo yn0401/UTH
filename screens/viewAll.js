@@ -8,12 +8,28 @@ import GiftScreen from "./gift";
 import HistoryScreen from "./history";
 import ProfileScreen from "./profile";
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import GuestScreen from "./guest1";
+import { getAuth, updateProfile } from "firebase/auth";
+import { useEffect } from "react";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const MainScreen = () => {
+const MainScreen = ({route}) => {
+  const {member} = route.params;
+  const auth = getAuth();
+  const update = (profile) => {
+      updateProfile(auth.currentUser, {
+          displayName: profile.name, photoURL: profile.url
+      }).then(() => {
+          console.log('update profile success');
+      }).catch((error) => {
+          console.log('error', error);
+      });
+  }
+  useEffect(() => {
+      update(member);
+  },[update(member)])
+
   return (
     <Tab.Navigator
       screenOptions={{

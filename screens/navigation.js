@@ -17,19 +17,30 @@ import DetailProfile from "./profileDetails";
 import AddGift from "./addGift";
 import DetailGift from "./giftDetails";
 import UpdateGift from "./updateGift";
+import StartScreen from "./start";
+import RegisterScreen from "./register";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
 const HomeNavigator = () => (
-  <Navigator screenOptions={{ headerShown: true }}>
+  <Navigator
+    initialRouteName="Start"
+    screenOptions={{
+      headerShown: false,
+    }}>
     <Screen
-      name="Home"
-      component={LoginScreen}
+      name="Start"
+      component={StartScreen}
       options={{ headerShown: false }}
     />
     <Screen
-      name="Main"
-      component={MainScreen}
+      name="Register"
+      component={RegisterScreen}
+      options={{ headerShown: false }}
+    />
+    <Screen
+      name="Login"
+      component={LoginScreen}
       options={{ headerShown: false }}
     />
     <Screen
@@ -37,6 +48,12 @@ const HomeNavigator = () => (
       component={GuestScreen}
       options={{ headerShown: false }}
     />
+    <Screen
+      name="Main"
+      component={MainScreen}
+      options={{ headerShown: false }}
+    />
+
     <Screen name="Gift" component={TransactionDetailsScreen} />
     <Screen name="Event" component={EventScreen} />
     <Screen name="Profile" component={ProfileScreen} />

@@ -107,23 +107,25 @@ const UpdateMember = ({ route, navigation }) => {
   const member = route.params.member;
   const id = route.params.id;
   console.log("member: ", member);
+  const[email, setEmail] = useState(member.email)
   const [name, setName] = useState(member.name);
   const [role, setRole] = useState(member.role);
   const [photoURL, setPhotoURL] = useState(member.url);
   const [currentPoint, setCurrentPoint] = useState(member.currentPoint);
   const [dob, setDob] = useState(member.dob);
-  const [createAdd, setCreateAdd] = useState(member.createAdd);
+  const [createdAt, setCreatedAt] = useState(member.createAdd);
 
   let timestamp = new Date().toUTCString();
   const updateMember = () => {
     const member = {
       id: id,
+      email: email,
       name: name,
       role: role,
       url: photoURL,
       currentPoint: currentPoint,
       dob: dob,
-      createAdd: timestamp,
+      createdAt: createdAt,
     };
     dispatch(memberAction.fetchUpdate(member));
     navigation.navigate("Home");
@@ -148,6 +150,12 @@ const UpdateMember = ({ route, navigation }) => {
             placeholder="Name"
             value={name}
             onChangeText={(value) => setName(value)}
+          />
+           <TextInput
+            style={styles.InputText}
+            placeholder="Email"
+            value={name}
+            onChangeText={(value) => setEmail(value)}
           />
           <TextInput
             style={styles.InputText}

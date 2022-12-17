@@ -15,12 +15,23 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 import LoginScreen from "./login";
+import { getAuth, signOut } from "firebase/auth";
+
 
 const ProfileScreen = ({ navigation }) => {
-  const navigate = () => {
-    navigation.navigate("ViewAll");
+  const navigateToLogin = () => {
+    navigation.navigate("Start");
   };
-
+  const auth = getAuth();
+  const onLogoutPressed = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      navigateToLogin();
+    }).catch((error) => {
+      // An error happened.
+      console.log('error', error);
+    })
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -33,7 +44,7 @@ const ProfileScreen = ({ navigation }) => {
               <View style={styles.square1}></View>
               <View style={styles.square1}></View>
               <View style={styles.square1}>
-              <TouchableOpacity style={styles.btnNoti}>
+                <TouchableOpacity style={styles.btnNoti}>
                   <Ion name="pencil" style={styles.iconNoti} />
                 </TouchableOpacity>
               </View>
@@ -90,7 +101,7 @@ const ProfileScreen = ({ navigation }) => {
             </Text>
           </View>
 
-          <TouchableOpacity style={styles.signout} onPress={LoginScreen}>
+          <TouchableOpacity style={styles.signout} onPress={onLogoutPressed}>
             <Text style={styles.txtSignout}>Sign Out</Text>
             <Fo
               name="sign-out-alt"

@@ -16,11 +16,16 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAll } from "../redux/actions/memberAction";
+import { getAuth} from "firebase/auth";
 
 const HomeScreen = ({ navigation }) => {
-  const navigate = () => {
-    navigation.navigate("ViewAll");
-  };
+  const auth = getAuth();
+  const user = auth.currentUser;
+  if (user) {
+    console.log(user.displayName)
+  } else {
+    console.log('no user')
+  }
 
   const event = () => {
     navigation.navigate("Event");
