@@ -9,28 +9,13 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import Icon from "react-native-vector-icons/Octicons";
 import Ion from "react-native-vector-icons/Ionicons";
 import Fo from "react-native-vector-icons/FontAwesome5";
 import Mate from "react-native-vector-icons/MaterialCommunityIcons";
-import Mat from "react-native-vector-icons/MaterialIcons";
-import Foun from "react-native-vector-icons/Foundation";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAll } from "../redux/actions/giftAction";
-
-// const GiftScreen = ({ params, }) => {
-
-//     return (
-//         <View style={styles.container}>
-//             <FlatList
-//                 data={db.gifts}
-//                 renderItem={ListGift}
-//             />
-//         </View>
-//     );
-// }
 
 function GiftScreen({ navigation }) {
   const dispatch = useDispatch();
@@ -40,40 +25,47 @@ function GiftScreen({ navigation }) {
     dispatch(fetchAll());
   }, []);
 
-  const navigateGift = () => {
-    navigation.navigate("Gift");
+  const addGift = () => {
+    navigation.navigate("AddGift");
   };
+
+  const detail = (id) => {
+    console.log(id);
+    navigation.navigate("DetailGift", {
+      id: id,
+    });
+  };
+
   const ListGift = ({ item }) => {
     return (
-      <View>
-        <View style={styles.card} key={item.id}>
-          <View style={styles.gift}>
-            <View style={styles.contentCard}>
-              <TouchableOpacity style={styles.nameGift}>
-                <Image
-                  style={styles.iconGift}
-                  source={{
-                    uri: item.imageURL,
-                  }}
-                />
-                <Text style={styles.txtGiftActive}>{item.name}</Text>
-                <Mate
-                  name={item.icon}
-                  color={item.colorfire}
-                  style={styles.iconFire}
-                />
-              </TouchableOpacity>
-              <View style={styles.viewPoint}>
-                <Text style={styles.point}>{item.point}P</Text>
-              </View>
-                <TouchableOpacity>
-                <Mate name="gift" color="red" style={styles.iconGift1} />
-                </TouchableOpacity>
-              
+      // <TouchableOpacity>
+      <View style={styles.card}>
+        <TouchableOpacity style={styles.gift} onPress={() => detail(item.id)}>
+          <View style={styles.contentCard}>
+            <TouchableOpacity style={styles.nameGift}>
+              <Image
+                style={styles.iconGift}
+                source={{
+                  uri: item.photoURL,
+                }}
+              />
+              <Text style={styles.txtGiftActive}>{item.name}</Text>
+              <Mate
+                name={item.icon}
+                color={item.colorfire}
+                style={styles.iconFire}
+              />
+            </TouchableOpacity>
+            <View style={styles.viewPoint}>
+              <Text style={styles.point}>{item.point}P</Text>
             </View>
+            <TouchableOpacity>
+              <Mate name="gift" color="red" style={styles.iconGift1} />
+            </TouchableOpacity>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
+      // </TouchableOpacity>
     );
   };
 
@@ -85,8 +77,10 @@ function GiftScreen({ navigation }) {
             Gift
           </Text>
           <View style={{ marginLeft: 130, flexDirection: "row" }}>
+            <View style={styles.square1}></View>
             <View style={styles.square1}>
               <TouchableOpacity
+                onPress={addGift}
                 style={{
                   marginLeft: 10,
                   height: 40,
@@ -99,22 +93,6 @@ function GiftScreen({ navigation }) {
                 }}
               >
                 <Fo name="plus" style={styles.icon3} />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.square1}>
-              <TouchableOpacity
-                style={{
-                  marginLeft: 10,
-                  height: 40,
-                  width: 40,
-                  borderRadius: 40 / 2,
-                  backgroundColor: "white",
-                  textAlign: "center",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Fo name="location-arrow" style={styles.icon3} />
               </TouchableOpacity>
             </View>
             <View style={styles.square1}>
@@ -175,7 +153,7 @@ function GiftScreen({ navigation }) {
         </View>
 
         <View style={styles.button}>
-          <TouchableOpacity onPress={navigateGift} style={styles.btn1}>
+          <TouchableOpacity style={styles.btn1}>
             <Text style={styles.btnText1}>All</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn2}>
@@ -460,13 +438,13 @@ const styles = StyleSheet.create({
     color: "#800080",
   },
   gift: {
-    // borderRadius: 15,
+    borderRadius: 8,
     width: 370,
     backgroundColor: "white",
-    // shadowColor: '#000',
-    // shadowOffset: { width: 5, height: 0 },
-    // shadowOpacity: 0.1,
-    // shadowRadius: 7,
+    shadowColor: "#000",
+    shadowOffset: { width: 5, height: 0 },
+    shadowOpacity: 0.1,
+    shadowRadius: 7,
   },
   card: {
     alignItems: "center",
@@ -481,6 +459,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     // borderBottomWidth: 2,
     height: 90,
+    width: "100%",
     // borderBottomColor: '#EFF3FF'
   },
   nameGift: {

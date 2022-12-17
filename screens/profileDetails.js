@@ -10,9 +10,8 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import Ion from "react-native-vector-icons/Ionicons";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchByID } from "../redux/actions/memberAction";
+import { fetchByID, fetchDelete } from "../redux/actions/memberAction";
 
 const DetailProfile = ({ route, navigation }) => {
   const navigate = () => {
@@ -35,29 +34,18 @@ const DetailProfile = ({ route, navigation }) => {
     setItem(store);
   }, [store]);
 
+  const deleteMember = (id) => {
+    dispatch(fetchDelete(id));
+  };
+
+  const navigateUpdate = () => {
+    navigation.navigate("UpdateMember", { member: item, id: id });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} key={item.id}>
         <View style={styles.header}>
-          <View style={styles.head}>
-            <Text style={{ color: "white", fontSize: 34, fontWeight: "bold" }}>
-              Profile
-            </Text>
-            <View style={{ marginLeft: 0, flexDirection: "row" }}>
-              <View style={styles.square1}></View>
-              <View style={styles.square1}></View>
-              <View style={styles.square1}>
-                <TouchableOpacity style={styles.btnNoti}>
-                  <Ion name="pencil" style={styles.iconNoti} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.square1}>
-                <TouchableOpacity style={styles.btnNoti}>
-                  <Ion name="notifications" style={styles.iconNoti} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
           <View style={styles.avatar}>
             <Image
               style={styles.img}
@@ -71,15 +59,23 @@ const DetailProfile = ({ route, navigation }) => {
           <Text style={styles.txtName}>Hi, {item.name}</Text>
           <View style={styles.infoCard}>
             <Text style={styles.txtRole}>Role : {item.role}</Text>
-            <Text style={styles.txtPoint}>Current Point: {item.currentPoint} P</Text>
+            <Text style={styles.txtPoint}>
+              Current Point: {item.currentPoint} P
+            </Text>
             <Text style={styles.txtDoB}>Date of Birth: {item.dob}</Text>
           </View>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            onPress={() => navigateUpdate(id)}
+            style={styles.button}
+          >
             <Text style={styles.txtButton}>Update</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            onPress={() => deleteMember(id)}
+            style={styles.button}
+          >
             <Text style={styles.txtButton}>Delete</Text>
           </TouchableOpacity>
         </View>

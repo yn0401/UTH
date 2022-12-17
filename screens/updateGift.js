@@ -12,7 +12,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 
 import { useDispatch } from "react-redux";
-import * as memberAction from "../redux/actions/memberAction";
+import * as giftAction from "../redux/actions/giftAction";
 
 import {
   getStorage,
@@ -22,7 +22,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 
-const UpdateMember = ({ route, navigation }) => {
+const UpdateGift = ({ route, navigation }) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -104,34 +104,33 @@ const UpdateMember = ({ route, navigation }) => {
 
   const dispatch = useDispatch();
 
-  const member = route.params.member;
+  const gift = route.params.gift;
   const id = route.params.id;
-  console.log("member: ", member);
-  const [name, setName] = useState(member.name);
-  const [role, setRole] = useState(member.role);
-  const [photoURL, setPhotoURL] = useState(member.url);
-  const [currentPoint, setCurrentPoint] = useState(member.currentPoint);
-  const [dob, setDob] = useState(member.dob);
-  const [createAdd, setCreateAdd] = useState(member.createAdd);
+//   console.log("member: ", gift);
+  const [name, setName] = useState(gift.name);
+  const [description, setDescription] = useState(gift.description);
+  const [photoURL, setPhotoURL] = useState(gift.photoURL);
+  const [point, setPoint] = useState(gift.point);
+  const [quantity, setQuantity] = useState(gift.quantity);
 
   let timestamp = new Date().toUTCString();
-  const updateMember = () => {
-    const member = {
+  const updateGift = () => {
+    const gift = {
       id: id,
       name: name,
-      role: role,
-      url: photoURL,
-      currentPoint: currentPoint,
-      dob: dob,
+      description: description,
+      photoURL: photoURL,
+      point: point,
+      quantity: quantity,
       createAdd: timestamp,
     };
-    dispatch(memberAction.fetchUpdate(member));
+    dispatch(giftAction.fecthUpdate(gift));
     navigation.navigate("Home");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Update Member</Text>
+      <Text style={styles.title}>Update Gift</Text>
       <Image
         style={styles.image}
         source={{
@@ -151,25 +150,25 @@ const UpdateMember = ({ route, navigation }) => {
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Role"
-            value={role}
-            onChangeText={(value) => setRole(value)}
+            placeholder="Description"
+            value={description}
+            onChangeText={(value) => setDescription(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Current Point"
-            value={currentPoint}
-            onChangeText={(value) => setCurrentPoint(value)}
+            placeholder="Point"
+            value={point}
+            onChangeText={(value) => setPoint(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Date of Birth"
-            value={dob}
-            onChangeText={(value) => setDob(value)}
+            placeholder="Stock"
+            value={quantity}
+            onChangeText={(value) => setQuantity(value)}
           />
           <TouchableOpacity
             style={styles.button}
-            onPress={() => updateMember()}
+            onPress={() => updateGift()}
           >
             <Text style={styles.buttonText}>Update</Text>
           </TouchableOpacity>
@@ -179,7 +178,7 @@ const UpdateMember = ({ route, navigation }) => {
   );
 };
 
-export default UpdateMember;
+export default UpdateGift;
 
 const styles = StyleSheet.create({
   container: {

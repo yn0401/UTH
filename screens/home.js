@@ -35,6 +35,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const detail = (id) => {
+    console.log(id);
     navigation.navigate("DetailProfile", {
       id: id,
     });
@@ -42,8 +43,6 @@ const HomeScreen = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const member = useSelector((store) => store.members);
-
-  const [memberData, setMemberData] = useState({});
 
   useEffect(() => {
     dispatch(fetchAll());

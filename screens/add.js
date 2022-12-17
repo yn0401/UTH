@@ -145,7 +145,7 @@ const AddMem = ({ params }) => {
   const [dob, setDob] = useState("");
   const [createAdd, setCreateAdd] = useState("");
 
-  let timestamp = new Date().getDate();
+  let timestamp = new Date().toUTCString();
   const addMember = () => {
     const member = {
       name: name,
