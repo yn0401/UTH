@@ -13,6 +13,7 @@ import ProfileScreen from "./profile";
 import TransactionDetailsScreen from "./transactiondetails";
 import AddMem from "./add";
 import updateMember from "./updateMember";
+import DetailProfile from "./profileDetails";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ const HomeNavigator = () => (
     <Screen name="InfoEvent" component={InfoEventScreen} />
     <Screen name="AddMember" component={AddMem} />
     <Screen name="UpdateMember" component={updateMember} />
+    <Screen name="DetailProfile" component={DetailProfile} />
   </Navigator>
 );
 

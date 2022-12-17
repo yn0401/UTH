@@ -17,11 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAll } from "../redux/actions/memberAction";
 
-const HomeScreen = ({ route, navigation }) => {
-  // const id = route.params.id;
-  // const navigateUpdate = (id) => {
-  //   navigation.navigate("Update", { member: memberData, id: id });
-  // };
+const HomeScreen = ({ navigation }) => {
   const navigate = () => {
     navigation.navigate("ViewAll");
   };
@@ -38,6 +34,12 @@ const HomeScreen = ({ route, navigation }) => {
     navigation.navigate("AddMember");
   };
 
+  const detail = (id) => {
+    navigation.navigate("DetailProfile", {
+      id: id,
+    });
+  };
+
   const dispatch = useDispatch();
   const member = useSelector((store) => store.members);
 
@@ -50,11 +52,11 @@ const HomeScreen = ({ route, navigation }) => {
 
   const ListMember = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.main2}>
+      <TouchableOpacity onPress={() => detail(item.id)} style={styles.main2}>
         <View style={styles.member}>
           <View style={styles.mem}>
             <View style={styles.imgMem}>
-              <Image style={styles.avaMem} source={{ uri: item.photoURL }} />
+              <Image style={styles.avaMem} source={{ uri: item.url }} />
               <Text style={styles.nameMem}>{item.name}</Text>
               <Image
                 style={styles.roleImg}
@@ -64,7 +66,7 @@ const HomeScreen = ({ route, navigation }) => {
               />
             </View>
             <View style={styles.point}>
-              <Text style={styles.txtPoint}>{item.totalPoint} P </Text>
+              <Text style={styles.txtPoint}>{item.currentPoint} P</Text>
             </View>
           </View>
         </View>

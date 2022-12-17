@@ -24,7 +24,6 @@ const InfoEventScreen = ({ route, navigation }) => {
     console.log("store", store);
   }, [store]);
 
-
   const navigate = () => {
     navigation.navigate("ViewAll");
   };

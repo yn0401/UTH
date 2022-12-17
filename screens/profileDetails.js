@@ -1,184 +1,222 @@
+import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import {
   StyleSheet,
+  Image,
+  TouchableOpacity,
   Text,
   View,
-  Image,
+  SafeAreaView,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
-import React from "react";
-import Octicons from "react-native-vector-icons/Octicons";
-
-import Fo from "react-native-vector-icons/FontAwesome5";
-import Icon from "react-native-vector-icons/Octicons";
 import Ion from "react-native-vector-icons/Ionicons";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchByID } from "../redux/actions/memberAction";
 
-const GiftDetail = ({ navigation }) => {
+const DetailProfile = ({ route, navigation }) => {
+  const navigate = () => {
+    navigation.navigate("ViewAll");
+  };
+
+  const [item, setItem] = useState({});
+
+  const id = route.params.id;
+
+  let store = useSelector((store) => store.members.member);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchByID(id));
+  }, [dispatch]);
+
+  useEffect(() => {
+    setItem(store);
+  }, [store]);
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.item}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: "https://cdn.honda.com.vn/motorbikes/October2022/m8uAL1Lritol2DvJxXGB.png",
-          }}
-        />
-        <View style={styles.info}>
-          <View style={styles.info1}>
-            <Text style={styles.product}>Product</Text>
-            <View style={styles.new}>
-              <Text style={{ color: "white", justifyContent: "center" }}>
-                New
-              </Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView} key={item.id}>
+        <View style={styles.header}>
+          <View style={styles.head}>
+            <Text style={{ color: "white", fontSize: 34, fontWeight: "bold" }}>
+              Profile
+            </Text>
+            <View style={{ marginLeft: 0, flexDirection: "row" }}>
+              <View style={styles.square1}></View>
+              <View style={styles.square1}></View>
+              <View style={styles.square1}>
+                <TouchableOpacity style={styles.btnNoti}>
+                  <Ion name="pencil" style={styles.iconNoti} />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.square1}>
+                <TouchableOpacity style={styles.btnNoti}>
+                  <Ion name="notifications" style={styles.iconNoti} />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-          <Text style={styles.name}>SH Mode</Text>
-          <Text style={styles.point}>99 P</Text>
+          <View style={styles.avatar}>
+            <Image
+              style={styles.img}
+              source={{
+                uri: item.url,
+              }}
+            />
+          </View>
         </View>
-        <View style={styles.description}>
-          <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 30 }}>
-            Description
-          </Text>
-          <Text style={styles.txtDes}>sdfsdfsdf</Text>
+        <View style={styles.main}>
+          <Text style={styles.txtName}>Hi, {item.name}</Text>
+          <View style={styles.infoCard}>
+            <Text style={styles.txtRole}>Role : {item.role}</Text>
+            <Text style={styles.txtPoint}>Current Point: {item.currentPoint} P</Text>
+            <Text style={styles.txtDoB}>Date of Birth: {item.dob}</Text>
+          </View>
         </View>
-      </View>
-
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btnText}>UPDATE</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btnText}>DELETE</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.txtButton}>Update</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.txtButton}>Delete</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
-
-export default GiftDetail;
+export default DetailProfile;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#426ef0",
   },
-  item: {
-    padding: 10,
-    margin: 5,
-    backgroundColor: "#eee",
-    borderRadius: 10,
+  scrollView: {
+    backgroundColor: "white",
   },
-  main: {},
-  txtSize: {
-    fontSize: 14,
-    fontWeight: "bold",
-    paddingTop: 20,
-  },
-  txtDes: {
-    fontSize: 14,
-    marginTop: 10,
-  },
-  sizeActive: {
-    fontSize: 17,
-    fontWeight: "bold",
-  },
-  viewSize: {
-    marginTop: 10,
-    width: 40,
-    height: 40,
-    borderRadius: 10,
-    borderWidth: 1,
-    justifyContent: "center",
-    textAlign: "center",
-    marginLeft: 15,
-  },
-  image: {
+  header: {
+    height: 180,
+    backgroundColor: "#426ef0",
     width: "100%",
-    height: 250,
-    resizeMode: "contain",
-    borderRadius: 10,
-  },
-  info: {
-    marginTop: 20,
-  },
-  info1: {
-    width: 60,
-    flexDirection: "row",
-  },
-  product: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  new: {
-    width: 55,
-    height: 20,
-    backgroundColor: "black",
-    borderRadius: 5,
-    justifyContent: "center",
+    paddingTop: 135,
+    alignItems: "center",
     textAlign: "center",
-    marginLeft: 220,
+    justifyContent: "center",
   },
-  name: {
-    fontSize: 24,
-    fontWeight: "bold",
-    flexWrap: "wrap",
+  main: {
+    flex: 7,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 100,
   },
-  point: {
-    fontSize: 16,
-    color: "#888",
-  },
-  search: {
-    padding: 10,
-    backgroundColor: "#fff",
+  head: {
+    width: "100%",
+    height: 50,
+    borderRadius: 8,
+    backgroundColor: "#426ef0",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    borderRadius: 15,
-    border: "1px solid #ccc",
+    textAlign: "center",
+    justifyContent: "center",
+    marginBottom: 20,
   },
-  searchInput: {
-    backgroundColor: "#fff",
-    padding: 10,
-    flex: 1,
-  },
-  color: {
-    paddingTop: 20,
-  },
-
-  row: {
+  square1: {
+    backgroundColor: "#426ef0",
     flexDirection: "row",
-    paddingTop: 20,
+    width: 50,
+    height: 50,
+    alignItems: "center", // ignore this - we'll come back to it
+    justifyContent: "center",
   },
-  rowImg: {
-    width: 100,
-    height: 100,
-    borderRadius: 20,
-    borderWidth: 2,
-    borderColor: "black",
-    marginRight: 10,
-    resizeMode: "contain",
+  btnNoti: {
+    height: 40,
+    width: 40,
+    borderRadius: 40 / 2,
+    backgroundColor: "white",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  iconNoti: {
+    color: "#426ef0",
+    fontSize: 25,
+    fontWeight: "bold",
+    width: "100%",
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  img: {
+    height: 180,
+    width: 180,
+    borderRadius: 180 / 2,
+    borderWidth: 4,
+    borderColor: "white",
+    justifyContent: "center",
+  },
+  avatar: {
+    top: -30,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 205,
+    height: 205,
+    backgroundColor: "#426ef0",
+    justifyContent: "center",
+    borderRadius: 205 / 2,
+  },
+  txtName: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  infoCard: {
+    width: 350,
+    height: 180,
+    marginTop: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.35,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 8,
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  txtRole: {
+    fontSize: 22,
+    fontWeight: "600",
+  },
+  txtPoint: {
+    fontSize: 22,
+    fontWeight: "600",
+  },
+  txtDoB: {
+    fontSize: 22,
+    fontWeight: "600",
   },
   footer: {
-    flex: 1,
     marginTop: 20,
     flexDirection: "row",
     justifyContent: "center",
-  },
-  btn: {
-    backgroundColor: "#222b45",
-    borderRadius: 10,
-    padding: 10,
-    marginRight: 10,
-    width: 150,
-    justifyContent: "center",
     alignItems: "center",
   },
-  btnText: {
-    color: "#fff",
-    fontSize: 20,
+  button: {
+    width: 100,
+    backgroundColor: "#426ef0",
+    margin: 10,
+    padding: 10,
     textAlign: "center",
-    justifyContent: "center",
-    fontWeight: "bold",
+    borderRadius: 8,
+  },
+  txtButton: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "700",
   },
 });
