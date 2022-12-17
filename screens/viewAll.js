@@ -13,7 +13,7 @@ import GuestScreen from "./guest1";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const MainScreen = () => {
+const MainScreen = ({route}) => {
   return (
     <Tab.Navigator
       screenOptions={{

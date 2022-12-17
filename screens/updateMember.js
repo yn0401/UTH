@@ -22,7 +22,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 
-const updateMember = ({ route, navigation }) => {
+const UpdateMember = ({ route, navigation }) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -178,7 +178,7 @@ const updateMember = ({ route, navigation }) => {
   );
 };
 
-export default updateMember;
+export default UpdateMember;
 
 const styles = StyleSheet.create({
   container: {

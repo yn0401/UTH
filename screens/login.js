@@ -1,17 +1,22 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
+import { useState } from "react";
 import QRScreen from "./qr";
 
 
 const LoginScreen = ({ navigation }) => {
+
   const navigate = () => {
     navigation.navigate("Main");
-}; 
+  };
 
-const navigate1 = () => {
-  navigation.navigate("Guest");
-}; 
+  const navigate1 = () => {
+    navigation.navigate("Guest");
+  };
+
+  const [email, onChangeEmail] = useState("");
+  const [password, onChangePassword] = useState("");
 
   return (
     <View style={styles.container}>
@@ -26,12 +31,27 @@ const navigate1 = () => {
         <Text style={styles.subTitle}>Membership Gift Exchange App</Text>
       </View>
       <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeEmail}
+          value={email}
+          placeholder="Email"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangePassword}
+          value={password}
+          placeholder="Password"
+          keyboardType="password"
+        />
+      </View>
+      <View>
         <TouchableOpacity onPress={navigate} style={styles.button}>
           <Text style={styles.btn}>Sign in</Text>
           <Icon name="arrow-right" style={styles.icon} />
         </TouchableOpacity>
       </View>
-      <View style={{marginTop: 20}}>
+      <View style={{ marginTop: 20 }}>
         <TouchableOpacity onPress={navigate1} style={styles.button}>
           <Text style={styles.btn}>Guest</Text>
           <Icon name="arrow-right" style={styles.icon} />
@@ -43,6 +63,16 @@ const navigate1 = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  input: {
+    width: 300,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    padding: 15,
+    borderColor: '#426ef0',
+    borderRadius: 25,
+    textAlign: "center",
+  },
   container: {
     flex: 1,
     justifyContent: "center",
