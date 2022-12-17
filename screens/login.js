@@ -2,17 +2,53 @@ import React from "react";
 import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
 import TextInput from "../components/TextInput";
-// import { TextInput } from "react-native";
 import { useState } from "react";
 import { emailValidator } from '../helpers/emailValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
 import QRScreen from "./qr";
 import BackButton from "../components/BackButton";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
+  const auth = getAuth();
+  
+  const login = (email,password) => {
+    console.log('email', email);
+    console.log('password', password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        const member = {
+          email: user.email,
+          name: user.displayName,
+          url: user.photoURL,
+          role: 'member',
+          currentPoints: 0,
+          dob: '',
+          createdAt: Date.now(),
+        };
+        console.log('user', member);
+        navigation.navigate("Main", { member: member });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('error', errorMessage);
+        console.log('error', errorCode);
+        if(errorCode === 'auth/wrong-password'){
+          alert('Wrong password');
+        }else if(errorCode === 'auth/user-not-found'){
+          alert('User not found');
+        }else{
+          alert(`Something wrong pls try again`);
+        }
+      });
+    }
+
 
   const navigateToGuest = () => {
     navigation.navigate("Guest");
@@ -26,7 +62,7 @@ const LoginScreen = ({ navigation }) => {
       setPassword({ ...password, error: passwordError })
       return
     }
-    navigation.navigate("Main");
+    login(email.value, password.value);
   }
 
   return (

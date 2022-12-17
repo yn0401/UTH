@@ -6,6 +6,7 @@ import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
 import BackButton from '../components/BackButton';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function RegisterScreen({ navigation }) {
     const [name, setName] = useState({ value: '', error: '' })
@@ -16,6 +17,51 @@ export default function RegisterScreen({ navigation }) {
         navigation.navigate("Guest");
     };
 
+    const auth = getAuth();
+    const register = (email, password, name) => {
+        console.log('name', name);
+        console.log('email', email);
+        console.log('password', password);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                const member = {
+                    email: user.email,
+                    name: name,
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Blackpink_Lisa_GMP_240622.png',
+                    role: 'member',
+                    currentPoints: 0,
+                    dob: '',
+                    createdAt: Date.now(),
+                };
+                console.log('member', member);
+                // updateProfile(member);
+                navigation.reset({
+                    index: 0,
+                    routes: [{
+                        name: 'Main',
+                        params: { member: member }
+                    }],
+                })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log('error', errorMessage);
+                console.log('error', errorCode);
+                if (errorCode === 'auth/email-already-in-use') {
+                    alert('Email already in use');
+                }
+                if (errorCode === 'auth/invalid-email') {
+                    alert('Invalid email');
+                }
+                if (errorCode === 'auth/weak-password') {
+                    alert('Weak password');
+                }
+
+            });
+    }
     const onSignUpPressed = () => {
         const nameError = nameValidator(name.value)
         const emailError = emailValidator(email.value)
@@ -26,14 +72,8 @@ export default function RegisterScreen({ navigation }) {
             setPassword({ ...password, error: passwordError })
             return
         }
-        console.log('name', name.value);
-        console.log('email', email.value);
-        console.log('password', password.value);
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'Login' }],
+        register(email.value, password.value, name.value);
 
-        })
     }
 
     return (
