@@ -1,9 +1,10 @@
-export const IPConfig = "192.168.1.4";
 export const getAll = "getAll";
 export const getByID = "getByID";
 export const addNew = "create";
 export const update = "update";
 export const deleteOne = "remove";
+
+export const IPConfig = "localhost";
 
 //lấy tất cả các event
 export const getAllEvent = (events) => {

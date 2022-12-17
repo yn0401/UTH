@@ -1,9 +1,10 @@
-export const IPConfig = "192.168.1.4";
-const getAll = "getAll";
-const getByID = "getByID";
-const addNew = "addNew";
-const update = "update";
-const deleteTransaction = "deleteTransaction";
+export const getAll = "getAll";
+export const getByID = "getByID";
+export const addNew = "addNew";
+export const update = "update";
+export const deleteTransaction = "deleteTransaction";
+
+const IPConfig = "localhost";
 
 //lấy tất cả transaction
 export const getAllTransaction = (transactions) => {

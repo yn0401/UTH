@@ -11,18 +11,34 @@ import InfoEventScreen from "./infoevent";
 import GuestScreen from "./guest1";
 import ProfileScreen from "./profile";
 import TransactionDetailsScreen from "./transactiondetails";
+import AddMem from "./add";
+import updateMember from "./updateMember";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
 const HomeNavigator = () => (
   <Navigator screenOptions={{ headerShown: true }}>
-    <Screen name="Home" component={LoginScreen} options={{ headerShown: false }}/>
-    <Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
-    <Screen name="Guest" component={GuestScreen} options={{ headerShown: false }}/>
-    <Screen name="Gift" component={TransactionDetailsScreen}  />
-    <Screen name="Event" component={EventScreen}/>
-    <Screen name="Profile" component={ProfileScreen}/>
-    <Screen name="InfoEvent" component={InfoEventScreen}/>
+    <Screen
+      name="Home"
+      component={LoginScreen}
+      options={{ headerShown: false }}
+    />
+    <Screen
+      name="Main"
+      component={MainScreen}
+      options={{ headerShown: false }}
+    />
+    <Screen
+      name="Guest"
+      component={GuestScreen}
+      options={{ headerShown: false }}
+    />
+    <Screen name="Gift" component={TransactionDetailsScreen} />
+    <Screen name="Event" component={EventScreen} />
+    <Screen name="Profile" component={ProfileScreen} />
+    <Screen name="InfoEvent" component={InfoEventScreen} />
+    <Screen name="AddMember" component={AddMem} />
+    <Screen name="UpdateMember" component={updateMember} />
   </Navigator>
 );
 
