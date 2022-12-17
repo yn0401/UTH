@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, Image, TouchableOpacity, Text, View, TextInput } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
+import TextInput from "../components/TextInput";
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
@@ -25,10 +26,14 @@ export default function RegisterScreen({ navigation }) {
             setPassword({ ...password, error: passwordError })
             return
         }
-        // navigation.reset({
-        //     index: 0,
-        //     routes: [{ name: 'Register' }],
-        // })
+        console.log('name', name.value);
+        console.log('email', email.value);
+        console.log('password', password.value);
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }],
+
+        })
     }
 
     return (
@@ -38,38 +43,42 @@ export default function RegisterScreen({ navigation }) {
                 <Text style={styles.title}>UNDER THE HOOD</Text>
                 <Text style={styles.subTitle}>SIGN UP</Text>
             </View>
-            <View>
-                <TextInput
-                    label="Email"
-                    returnKeyType="next"
-                    style={styles.input}
-                    value={email.value}
-                    onChangeText={(text) => setEmail({ value: text, error: '' })}
-                    error={!!email.error}
-                    errorText={email.error}
-                    autoCapitalize="none"
-                    autoCompleteType="email"
-                    textContentType="emailAddress"
-                    keyboardType="email-address"
-                    placeholder='Email'
-                />
-            </View>
-            <View style={{ marginTop: 20 }}>
-                <TextInput
-                    label="Password"
-                    returnKeyType="done"
-                    style={styles.input}
-                    onChangeText={(text) => setPassword({ value: text, error: '' })}
-                    value={password.value}
-                    error={!!password.error}
-                    errorText={password.error}
-                    secureTextEntry
-                    placeholder='Password'
-                />
-            </View>
+            <TextInput
+                label="Name"
+                returnKeyType="next"
+                value={name.value}
+                onChangeText={(text) => setName({ value: text, error: '' })}
+                error={!!name.error}
+                errorText={name.error}
+            />
+            <TextInput
+                label="Email"
+                returnKeyType="next"
+
+                value={email.value}
+                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                error={!!email.error}
+                errorText={email.error}
+                autoCapitalize="none"
+                autoCompleteType="email"
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                placeholder='Email'
+            />
+            <TextInput
+                label="Password"
+                returnKeyType="done"
+                onChangeText={(text) => setPassword({ value: text, error: '' })}
+                value={password.value}
+                error={!!password.error}
+                errorText={password.error}
+                secureTextEntry
+                placeholder='Password'
+            />
+
             <View style={{ marginTop: 20 }}>
                 <TouchableOpacity onPress={onSignUpPressed} style={styles.button}>
-                    <Text style={styles.btn}>Sign in</Text>
+                    <Text style={styles.btn}>Sign Up</Text>
                     <Icon name="arrow-right" style={styles.icon} />
                 </TouchableOpacity>
             </View>

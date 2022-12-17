@@ -17,8 +17,8 @@ import Foun from "react-native-vector-icons/Foundation";
 import LoginScreen from "./login";
 
 const ProfileScreen = ({ navigation }) => {
-  const navigate = () => {
-    navigation.navigate("Home");
+  const navigateToLogin = () => {
+    navigation.navigate("Start");
   };
 
   return (
@@ -90,7 +90,7 @@ const ProfileScreen = ({ navigation }) => {
             </Text>
           </View>
 
-          <TouchableOpacity style={styles.signout} onPress={LoginScreen}>
+          <TouchableOpacity style={styles.signout} onPress={navigateToLogin}>
             <Text style={styles.txtSignout}>Sign Out</Text>
             <Fo
               name="sign-out-alt"
