@@ -12,7 +12,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 
 import { useDispatch } from "react-redux";
-import * as memberAction from "../redux/actions/memberAction";
+import * as giftAction from "../redux/actions/giftAction";
 
 import {
   getStorage,
@@ -22,7 +22,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 
-const addGift = () => {
+const AddGift = () => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -105,29 +105,27 @@ const addGift = () => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const [description, setDescription] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  const [currentPoint, setCurrentPoint] = useState(0);
-  const [dob, setDob] = useState("");
-  const [createAdd, setCreateAdd] = useState("");
+  const [point, setPoint] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
-  let timestamp = new Date().getDate();
-  const addMember = () => {
-    const member = {
+  let timestamp = new Date().toUTCString();
+  const addGift = () => {
+    const gift = {
       name: name,
-      role: role,
-      url: photoURL,
-      currentPoint: currentPoint,
-      dob: dob,
+      description: description,
+      photoURL: photoURL,
+      point: point,
+      quantity: quantity,
       createAdd: timestamp,
     };
-    // console.log(member.url);
-    dispatch(memberAction.fetchAddNew(member));
+    dispatch(giftAction.fecthAddNew(gift));
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Add New Member</Text>
+      <Text style={styles.title}>Add New Gift</Text>
       <Image
         style={styles.image}
         source={{
@@ -148,23 +146,23 @@ const addGift = () => {
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Role"
+            placeholder="Description"
             // value={value}
-            onChangeText={(value) => setRole(value)}
+            onChangeText={(value) => setDescription(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Current Point"
+            placeholder="Point of Gift"
             // value={value}
-            onChangeText={(value) => setCurrentPoint(value)}
+            onChangeText={(value) => setPoint(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Date of Birth"
+            placeholder="Quantity"
             // value={value}
-            onChangeText={(value) => setDob(value)}
+            onChangeText={(value) => setQuantity(value)}
           />
-          <TouchableOpacity style={styles.button} onPress={() => addMember()}>
+          <TouchableOpacity style={styles.button} onPress={() => addGift()}>
             <Text style={styles.buttonText}>Confirm</Text>
           </TouchableOpacity>
         </View>
@@ -173,6 +171,54 @@ const addGift = () => {
   );
 };
 
-export default addGift;
+export default AddGift;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: 150,
+    height: 150,
+    borderRadius: 150 / 2,
+  },
+  button: {
+    backgroundColor: "#426ef0",
+    padding: 10,
+    borderRadius: 5,
+    marginVertical: 10,
+    width: 150,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+  },
+  title: {
+    marginBottom: 10,
+    fontSize: 30,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btn: {
+    marginTop: 20,
+  },
+  subTitle: {
+    fontSize: 20,
+  },
+  InputText: {
+    width: 300,
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
+  },
+});
