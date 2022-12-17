@@ -21,42 +21,8 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-import { firebase } from "../config/firebase";
 
-const AddMem = ({ params }) => {
-  // const checkTextInput = () => {
-  //   //Check for the Name TextInput
-  //   if (!name.trim()) {
-  //     alert("Please Enter Name");
-  //     return;
-  //   }
-  //   //Check for the Email TextInput
-  //   if (!IconGift.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!ColorIcon.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!IconFire.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!ColorIconFire.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!Point.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-
-  //   //Checked Successfully
-  //   //Do whatever you want
-  //   alert("Success");
-  // };
-
+const addGift = () => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -207,53 +173,6 @@ const AddMem = ({ params }) => {
   );
 };
 
-export default AddMem;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  image: {
-    width: 150,
-    height: 150,
-    borderRadius: 150 / 2,
-  },
-  button: {
-    backgroundColor: "#426ef0",
-    padding: 10,
-    borderRadius: 5,
-    marginVertical: 10,
-    width: 150,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-  },
-  title: {
-    marginBottom: 10,
-    fontSize: 30,
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  btn: {
-    marginTop: 20,
-  },
-  subTitle: {
-    fontSize: 20,
-  },
-  InputText: {
-    width: 300,
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
-    margin: 10,
-    padding: 10,
-  },
-});
+export default addGift;
+
+const styles = StyleSheet.create({});

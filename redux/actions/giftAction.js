@@ -1,5 +1,3 @@
-// import IPConfig from "../../config/ipConfig";
-
 export const getAll = "getAll";
 export const getLatest = "getLatest";
 export const getNewest = "getNewest";
@@ -11,8 +9,7 @@ export const update = "update";
 export const deleteGift = "deleteGift";
 export const search = "search";
 
-export const IPConfig = "192.168.1.4";
-
+export const IPConfig = "localhost";
 
 export const getAllGift = (gifts) => {
   return {

@@ -21,42 +21,8 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-import { firebase } from "../config/firebase";
 
-const AddMem = ({ params }) => {
-  // const checkTextInput = () => {
-  //   //Check for the Name TextInput
-  //   if (!name.trim()) {
-  //     alert("Please Enter Name");
-  //     return;
-  //   }
-  //   //Check for the Email TextInput
-  //   if (!IconGift.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!ColorIcon.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!IconFire.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!ColorIconFire.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!Point.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-
-  //   //Checked Successfully
-  //   //Do whatever you want
-  //   alert("Success");
-  // };
-
+const updateMember = ({ route, navigation }) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -138,16 +104,20 @@ const AddMem = ({ params }) => {
 
   const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
-  const [currentPoint, setCurrentPoint] = useState(0);
-  const [dob, setDob] = useState("");
-  const [createAdd, setCreateAdd] = useState("");
+  const member = route.params.member;
+  const id = route.params.id;
+  console.log("member: ", member);
+  const [name, setName] = useState(member.name);
+  const [role, setRole] = useState(member.role);
+  const [photoURL, setPhotoURL] = useState(member.url);
+  const [currentPoint, setCurrentPoint] = useState(member.currentPoint);
+  const [dob, setDob] = useState(member.dob);
+  const [createAdd, setCreateAdd] = useState(member.createAdd);
 
   let timestamp = new Date().getDate();
-  const addMember = () => {
+  const updateMember = () => {
     const member = {
+      id: id,
       name: name,
       role: role,
       url: photoURL,
@@ -155,8 +125,7 @@ const AddMem = ({ params }) => {
       dob: dob,
       createAdd: timestamp,
     };
-    // console.log(member.url);
-    dispatch(memberAction.fetchAddNew(member));
+    dispatch(memberAction.fetchUpdate(member));
   };
 
   return (
@@ -165,7 +134,7 @@ const AddMem = ({ params }) => {
       <Image
         style={styles.image}
         source={{
-          uri: selectedImage.localUri,
+          uri: photoURL,
         }}
       />
       <TouchableOpacity style={styles.button} onPress={openImage}>
@@ -176,30 +145,32 @@ const AddMem = ({ params }) => {
           <TextInput
             style={styles.InputText}
             placeholder="Name"
-            // value={value}
+            value={name}
             onChangeText={(value) => setName(value)}
-            // underlineColorAndroid="transparent"
           />
           <TextInput
             style={styles.InputText}
             placeholder="Role"
-            // value={value}
+            value={role}
             onChangeText={(value) => setRole(value)}
           />
           <TextInput
             style={styles.InputText}
             placeholder="Current Point"
-            // value={value}
+            value={currentPoint}
             onChangeText={(value) => setCurrentPoint(value)}
           />
           <TextInput
             style={styles.InputText}
             placeholder="Date of Birth"
-            // value={value}
+            value={dob}
             onChangeText={(value) => setDob(value)}
           />
-          <TouchableOpacity style={styles.button} onPress={() => addMember()}>
-            <Text style={styles.buttonText}>Confirm</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => updateMember()}
+          >
+            <Text style={styles.buttonText}>Update</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -207,7 +178,8 @@ const AddMem = ({ params }) => {
   );
 };
 
-export default AddMem;
+export default updateMember;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

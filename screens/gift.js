@@ -17,9 +17,8 @@ import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { fetchAll } from "../redux/actions/giftAction";
 import { useEffect } from "react";
+import { fetchAll } from "../redux/actions/giftAction";
 
 // const GiftScreen = ({ params, }) => {
 
@@ -39,7 +38,6 @@ function GiftScreen({ navigation }) {
 
   useEffect(() => {
     dispatch(fetchAll());
-    console.log(db);
   }, []);
 
   const navigateGift = () => {
@@ -47,11 +45,11 @@ function GiftScreen({ navigation }) {
   };
   const ListGift = ({ item }) => {
     return (
-      <TouchableOpacity>
+      <View>
         <View style={styles.card} key={item.id}>
           <View style={styles.gift}>
             <View style={styles.contentCard}>
-              <View style={styles.nameGift}>
+              <TouchableOpacity style={styles.nameGift}>
                 <Image
                   style={styles.iconGift}
                   source={{
@@ -64,16 +62,18 @@ function GiftScreen({ navigation }) {
                   color={item.colorfire}
                   style={styles.iconFire}
                 />
-              </View>
+              </TouchableOpacity>
               <View style={styles.viewPoint}>
                 <Text style={styles.point}>{item.point}P</Text>
               </View>
-
-              <Mate name="gift" color="red" style={styles.iconGift1} />
+                <TouchableOpacity>
+                <Mate name="gift" color="red" style={styles.iconGift1} />
+                </TouchableOpacity>
+              
             </View>
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
 
@@ -247,7 +247,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 7,
-    top: -28,
     backgroundColor: "white",
     width: "100%",
     borderTopRightRadius: 30,
