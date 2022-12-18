@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchByID, fetchDelete } from "../redux/actions/memberAction";
+import BackButton from "../components/BackButton";
 
 const DetailProfile = ({ route, navigation }) => {
   const navigate = () => {
@@ -46,6 +47,7 @@ const DetailProfile = ({ route, navigation }) => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} key={item.id}>
         <View style={styles.header}>
+          <BackButton goBack={navigation.goBack} />
           <View style={styles.avatar}>
             <Image
               style={styles.img}

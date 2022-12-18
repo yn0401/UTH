@@ -21,6 +21,7 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
+import BackButton from "../components/BackButton";
 
 const UpdateMember = ({ route, navigation }) => {
   const [selectedImage, setSelectedImage] = useState({
@@ -133,6 +134,7 @@ const UpdateMember = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
+      <BackButton goBack={navigation.goBack} />
       <Text style={styles.title}>Update Member</Text>
       <Image
         style={styles.image}

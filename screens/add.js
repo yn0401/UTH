@@ -22,8 +22,9 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { firebase } from "../config/firebase";
+import BackButton from "../components/BackButton";
 
-const AddMem = ({ params }) => {
+const AddMem = ({navigation }) => {
   // const checkTextInput = () => {
   //   //Check for the Name TextInput
   //   if (!name.trim()) {
@@ -161,6 +162,7 @@ const AddMem = ({ params }) => {
 
   return (
     <View style={styles.container}>
+      <BackButton goBack={navigation.goBack} />
       <Text style={styles.title}>Add New Member</Text>
       <Image
         style={styles.image}
