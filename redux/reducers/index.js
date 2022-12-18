@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from "redux";
+import { combineReducers } from "redux";
 import { eventReducer } from "./eventReducer";
 import giftReducer from "./giftReducer";
 import { memberReducer } from "./memberReducer";
