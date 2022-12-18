@@ -16,11 +16,11 @@ import TransactionDetailsScreen from './screens/transactiondetails';
 import AddScreen from './screens/add';
 export default function App() {
   return (
-//     <Provider store={store}> 
-// <Navigation/>
-//     </Provider>
+    <Provider store={store}> 
+<Navigation/>
+    </Provider>
 
-<AddScreen/>
+
 
   );
 }
