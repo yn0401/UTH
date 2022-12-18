@@ -21,8 +21,9 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
+import BackButton from "../components/BackButton";
 
-const AddGift = () => {
+const AddGift = ({navigation}) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -125,6 +126,7 @@ const AddGift = () => {
 
   return (
     <View style={styles.container}>
+      <BackButton goBack={navigation.goBack} />
       <Text style={styles.title}>Add New Gift</Text>
       <Image
         style={styles.image}

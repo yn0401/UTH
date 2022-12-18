@@ -9,6 +9,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fecthByID, fecthDelete } from "../redux/actions/giftAction";
+import BackButton from "../components/BackButton";
 
 const DetailGift = ({ route, navigation }) => {
   const [item, setItem] = useState({});
@@ -37,6 +38,7 @@ const DetailGift = ({ route, navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
+      <BackButton goBack={navigation.goBack} />
       <View style={styles.item}>
         <Image
           style={styles.image}

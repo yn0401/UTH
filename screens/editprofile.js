@@ -17,6 +17,7 @@ import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 import LoginScreen from "./login";
 import SelectDropdown from "react-native-select-dropdown";
+import BackButton from "../components/backButton";
 
 const sex = ["Nam", "Nữ", "Giới tính khác"];
 
@@ -28,6 +29,7 @@ const EditProfileScreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.header}>
+          <BackButton goBack={navigation.goBack} />
           <View style={styles.head}>
             <Text style={{ color: "white", fontSize: 34, fontWeight: "bold" }}>
               Account
