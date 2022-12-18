@@ -20,12 +20,12 @@ import { getAuth} from "firebase/auth";
 
 const HomeScreen = ({ navigation }) => {
   const auth = getAuth();
-  const user = auth.currentUser;
-  if (user) {
-    console.log(user.displayName)
-  } else {
-    console.log('no user')
-  }
+  // const user = auth.currentUser;
+  // if (user) {
+  //   console.log(user.displayName)
+  // } else {
+  //   console.log('no user')
+  // }
 
   const event = () => {
     navigation.navigate("Event");
@@ -51,8 +51,9 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(fetchAll());
-    console.log(member);
-  }, []);
+    console.log(member.members);
+
+  }, [dispatch(fetchAll())]);
 
   const ListMember = ({ item }) => {
     return (
@@ -191,13 +192,13 @@ const HomeScreen = ({ navigation }) => {
             <Text style={{ fontSize: 15, fontWeight: "bold" }}>
               Leaderboard
             </Text>
-            <TouchableOpacity style={{ width: 180 }} onPress={add}>
+            {/* <TouchableOpacity style={{ width: 180 }} onPress={add}>
               <Ion
                 style={{ textAlign: "right" }}
                 size={30}
                 name="add-outline"
               />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <FlatList
             keyExtractor={(member) => member.id}

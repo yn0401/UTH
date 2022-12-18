@@ -214,7 +214,8 @@ app.get("/members", async (req, res) => {
                     id: doc.id,
                     ...doc.data()
                 }
-            ))
+            ));
+            // console.log('items', items);
             console.log('Get All Members Success');
             res.status(201).json(items);
         })

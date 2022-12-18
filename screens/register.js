@@ -7,6 +7,8 @@ import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
 import BackButton from '../components/BackButton';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import * as MemberActions from '../redux/actions/memberAction';
 
 export default function RegisterScreen({ navigation }) {
     const [name, setName] = useState({ value: '', error: '' })
@@ -16,6 +18,8 @@ export default function RegisterScreen({ navigation }) {
     const navigateToGuest = () => {
         navigation.navigate("Guest");
     };
+
+    const dispatch = useDispatch();
 
     const auth = getAuth();
     const register = (email, password, name) => {
@@ -31,12 +35,12 @@ export default function RegisterScreen({ navigation }) {
                     name: name,
                     url: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Blackpink_Lisa_GMP_240622.png',
                     role: 'member',
-                    currentPoints: 0,
+                    currentPoint: 0,
                     dob: '',
                     createdAt: Date.now(),
                 };
                 console.log('member', member);
-                // updateProfile(member);
+                dispatch(MemberActions.fetchAddNew(member));
                 navigation.reset({
                     index: 0,
                     routes: [{

@@ -16,19 +16,19 @@ const Stack = createNativeStackNavigator();
 
 const MainScreen = ({route}) => {
   const {member} = route.params;
-  const auth = getAuth();
-  const update = (profile) => {
-      updateProfile(auth.currentUser, {
-          displayName: profile.name, photoURL: profile.url
-      }).then(() => {
-          console.log('update profile success');
-      }).catch((error) => {
-          console.log('error', error);
-      });
-  }
-  useEffect(() => {
-      update(member);
-  },[update(member)])
+  // const auth = getAuth();
+  // const update = (profile) => {
+  //     updateProfile(auth.currentUser, {
+  //         displayName: profile.name, photoURL: profile.url
+  //     }).then(() => {
+  //         console.log('update profile success');
+  //     }).catch((error) => {
+  //         console.log('error', error);
+  //     });
+  // }
+  // useEffect(() => {
+  //     update(member);
+  // },[update(member)])
 
   return (
     <Tab.Navigator

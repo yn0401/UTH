@@ -26,9 +26,6 @@ const LoginScreen = ({ navigation }) => {
           email: user.email,
           name: user.displayName,
           url: user.photoURL,
-          role: 'member',
-          currentPoints: 0,
-          dob: '',
           createdAt: Date.now(),
         };
         console.log('user', member);
