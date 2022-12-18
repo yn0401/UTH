@@ -107,7 +107,7 @@ const UpdateMember = ({ route, navigation }) => {
 
   const member = route.params.member;
   const id = route.params.id;
-  console.log("member: ", member);
+  // console.log("member: ", member);
   const[email, setEmail] = useState(member.email)
   const [name, setName] = useState(member.name);
   const [role, setRole] = useState(member.role);
