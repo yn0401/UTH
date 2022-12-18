@@ -19,6 +19,8 @@ import DetailGift from "./giftDetails";
 import UpdateGift from "./updateGift";
 import StartScreen from "./start";
 import RegisterScreen from "./register";
+import AddEvent from "./addEvent";
+import UpdateEvent from "./updateEvent";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -27,7 +29,8 @@ const HomeNavigator = () => (
     initialRouteName="Start"
     screenOptions={{
       headerShown: false,
-    }}>
+    }}
+  >
     <Screen
       name="Start"
       component={StartScreen}
@@ -53,7 +56,6 @@ const HomeNavigator = () => (
       component={MainScreen}
       options={{ headerShown: false }}
     />
-
     <Screen name="Gift" component={TransactionDetailsScreen} />
     <Screen name="Event" component={EventScreen} />
     <Screen name="Profile" component={ProfileScreen} />
@@ -64,6 +66,8 @@ const HomeNavigator = () => (
     <Screen name="AddGift" component={AddGift} />
     <Screen name="UpdateGift" component={UpdateGift} />
     <Screen name="DetailGift" component={DetailGift} />
+    <Screen name="AddEvent" component={AddEvent} />
+    <Screen name="UpdateEvent" component={UpdateEvent} />
   </Navigator>
 );
 

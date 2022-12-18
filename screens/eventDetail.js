@@ -24,10 +24,6 @@ const InfoEventScreen = ({ route, navigation }) => {
     console.log("store", store);
   }, [store]);
 
-  const navigate = () => {
-    navigation.navigate("ViewAll");
-  };
-
   return (
     <View style={styles.container1} key={item.id}>
       <View style={styles.view1}>

@@ -72,7 +72,7 @@ const DetailGift = ({ route, navigation }) => {
           <Text style={styles.btnText}>UPDATE</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => deleteMember(id)} style={styles.btn}>
+        <TouchableOpacity onPress={() => deleteGift(id)} style={styles.btn}>
           <Text style={styles.btnText}>DELETE</Text>
         </TouchableOpacity>
       </View>
