@@ -42,7 +42,7 @@ function GiftScreen({ navigation }) {
       <View style={styles.card}>
         <TouchableOpacity style={styles.gift} onPress={() => detail(item.id)}>
           <View style={styles.contentCard}>
-            <TouchableOpacity style={styles.nameGift}>
+            <TouchableOpacity style={styles.nameGift} onPress={() => detail(item.id)}>
               <Image
                 style={styles.iconGift}
                 source={{
@@ -196,6 +196,7 @@ function GiftScreen({ navigation }) {
           keyExtractor={(item) => item.id}
           data={db.gifts}
           renderItem={ListGift}
+          disableVirtualization={true}
         />
       </View>
     </SafeAreaView>

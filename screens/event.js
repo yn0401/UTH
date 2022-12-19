@@ -10,7 +10,7 @@ import {
   FlatList,
 } from "react-native";
 import Fo from "react-native-vector-icons/FontAwesome5";
-
+import BackButton from "../components/BackButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fecthAll } from "../redux/actions/eventAction";
@@ -29,9 +29,13 @@ const EventScreen = ({ navigation }) => {
   };
 
   const info = (id) => {
-    navigation.navigate("InfoEvent", {
+    navigation.navigate("EventDetail", {
       id: id,
     });
+  };
+
+  const add = () => {
+    navigation.navigate("AddEvent");
   };
 
   const ListEvent = ({ item }) => {
@@ -41,7 +45,7 @@ const EventScreen = ({ navigation }) => {
           <Image
             style={styles.imgEvent}
             source={{
-              uri: item.imageURL,
+              uri: item.photoURL,
             }}
           />
           <Text style={styles.nameEvent}>{item.name}</Text>
@@ -58,6 +62,7 @@ const EventScreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.header}>
+        <BackButton goBack={navigation.goBack} />
           <Text style={styles.txt}>Exceeding Event Expectations</Text>
 
           <TouchableOpacity
@@ -71,6 +76,7 @@ const EventScreen = ({ navigation }) => {
               justifyContent: "center",
               alignItems: "center",
             }}
+            onPress={add}
           >
             <Fo name="plus" style={styles.icon3} />
           </TouchableOpacity>
@@ -80,6 +86,7 @@ const EventScreen = ({ navigation }) => {
           keyExtractor={(event) => event.id}
           data={event.events}
           renderItem={ListEvent}
+          disableVirtualization={true}
         />
       </ScrollView>
     </SafeAreaView>
@@ -112,6 +119,7 @@ const styles = StyleSheet.create({
   txt: {
     width: "85%",
     fontSize: 32,
+    marginLeft:10,
     alignItems: "flex-start",
     color: "white",
     fontWeight: "bold",

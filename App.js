@@ -7,8 +7,10 @@ import ProfileScreen from "./screens/profile";
 
 export default function App() {
   return (
-<ProfileScreen/>
 
+    <Provider store={store} theme={theme}>
+    <Navigation />
+  </Provider>
 
 
   );
