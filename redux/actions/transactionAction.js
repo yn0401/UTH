@@ -4,7 +4,7 @@ export const addNew = "addNew";
 export const update = "update";
 export const deleteTransaction = "deleteTransaction";
 
-const IPConfig = "192.168.1.3";
+const IPConfig = "10.104.21.36";
 
 //lấy tất cả transaction
 export const getAllTransaction = (transactions) => {
@@ -25,6 +25,7 @@ export const fecthAll = () => {
           },
         });
         const transactions = await res.json();
+        console.log(transactions);
         dispatch(getAllTransaction(transactions));
       } catch (error) {
         console.log(error);
