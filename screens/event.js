@@ -29,9 +29,13 @@ const EventScreen = ({ navigation }) => {
   };
 
   const info = (id) => {
-    navigation.navigate("InfoEvent", {
+    navigation.navigate("EventDetail", {
       id: id,
     });
+  };
+
+  const add = () => {
+    navigation.navigate("AddEvent");
   };
 
   const ListEvent = ({ item }) => {
@@ -41,7 +45,7 @@ const EventScreen = ({ navigation }) => {
           <Image
             style={styles.imgEvent}
             source={{
-              uri: item.imageURL,
+              uri: item.photoURL,
             }}
           />
           <Text style={styles.nameEvent}>{item.name}</Text>
@@ -71,6 +75,7 @@ const EventScreen = ({ navigation }) => {
               justifyContent: "center",
               alignItems: "center",
             }}
+            onPress={add}
           >
             <Fo name="plus" style={styles.icon3} />
           </TouchableOpacity>
@@ -80,6 +85,7 @@ const EventScreen = ({ navigation }) => {
           keyExtractor={(event) => event.id}
           data={event.events}
           renderItem={ListEvent}
+          disableVirtualization={true}
         />
       </ScrollView>
     </SafeAreaView>

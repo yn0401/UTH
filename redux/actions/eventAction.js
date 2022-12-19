@@ -4,7 +4,7 @@ export const addNew = "create";
 export const update = "update";
 export const deleteOne = "remove";
 
-export const IPConfig = "localhost";
+export const IPConfig = "192.168.1.3";
 
 //lấy tất cả các event
 export const getAllEvent = (events) => {

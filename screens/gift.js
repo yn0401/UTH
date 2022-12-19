@@ -196,6 +196,7 @@ function GiftScreen({ navigation }) {
           keyExtractor={(item) => item.id}
           data={db.gifts}
           renderItem={ListGift}
+          disableVirtualization={true}
         />
       </View>
     </SafeAreaView>

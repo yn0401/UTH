@@ -16,17 +16,17 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAll } from "../redux/actions/memberAction";
-import { getAuth} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const HomeScreen = ({ navigation }) => {
   const auth = getAuth();
   const user = auth.currentUser;
   useEffect(() => {
-    if(user){
+    if (user) {
       console.log(user);
     }
-  },[user])
-  
+  }, [user]);
+
   const event = () => {
     navigation.navigate("Event");
   };
@@ -52,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     dispatch(fetchAll());
     console.log(member.members);
-  }, [dispatch(fetchAll())]);
+  }, []);
 
   const ListMember = ({ item }) => {
     return (
@@ -81,131 +81,123 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.header}>
-          <View style={styles.head}>
-            <View style={styles.infoBar}>
-              <View style={styles.avatar}>
-                <Image
-                  style={styles.img}
-                  source={{
-                    uri: "https://dep.com.vn/wp-content/uploads/2019/01/BLACKPINK-Lisa-New-Instagram-Profile-Picture-November-2018.jpg",
-                  }}
-                />
-              </View>
-              <View styles={styles.info}>
-                <Text style={styles.name}>Đặng Ngọc Yến Nhi</Text>
-                <Text style={styles.role}>Member</Text>
-              </View>
-            </View>
-            <View style={styles.show}>
-              <View style={styles.showWindow}>
-                <TouchableOpacity style={styles.window1}>
-                  <Fo name="coins" style={styles.icon} />
-                  <TouchableOpacity
-                    style={{ paddingLeft: 10, flexDirection: "column" }}
-                  >
-                    <Text
-                      style={{
-                        color: "#426EF0",
-                        fontSize: 15,
-                        fontWeight: "medium",
-                      }}
-                    >
-                      Remaning Points
-                    </Text>
-                    <Text
-                      style={{
-                        color: "#426EF0",
-                        fontSize: 15,
-                        fontWeight: "bold",
-                      }}
-                    >
-                      1253544
-                    </Text>
-                  </TouchableOpacity>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.showWindow1}>
-                <TouchableOpacity style={styles.window2}>
-                  <Fo name="crown" style={styles.icon} />
-                  <View style={{ paddingLeft: 10, flexDirection: "column" }}>
-                    <Text
-                      style={{
-                        color: "#426EF0",
-                        fontSize: 15,
-                        fontWeight: "medium",
-                      }}
-                    >
-                      Member Date
-                    </Text>
-                    <Text
-                      style={{
-                        color: "#426EF0",
-                        fontSize: 15,
-                        fontWeight: "bold",
-                      }}
-                    >
-                      22-02-2022
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={{
-            flex: 7,
-            top: 70,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <View style={styles.main}>
-            <TouchableOpacity onPress={profile} style={styles.square}>
-              <Mate name="clipboard-account" style={styles.icon1} />
-              <Text style={{ fontWeight: "bold", fontSize: 15 }}>Account</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={event} style={styles.square}>
-              <Fo name="calendar-check" style={styles.icon2} />
-              <Text style={{ fontWeight: "bold", fontSize: 15 }}>Event</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square}>
-              <Mate name="qrcode-scan" style={styles.icon3} />
-              <Text style={{ fontWeight: "bold", fontSize: 15 }}>Scan</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.main1}>
-            <Image
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 10,
-                marginTop: 5,
-                marginLeft: 10,
-              }}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsPrbO0lEb7OmtiKhLsY0dRGr80ivlvE0ziCaixuXR632HoOl5ONhycJbcnb88MMpCDxU&usqp=CAU",
-              }}
-            />
-            <Text style={{ fontSize: 15, fontWeight: "bold" }}>
-              Leaderboard
-            </Text>
-            {/* <TouchableOpacity style={{ width: 180 }} onPress={add}>
-              <Ion
-                style={{ textAlign: "right" }}
-                size={30}
-                name="add-outline"
+      <View style={styles.header}>
+        <View style={styles.head}>
+          <View style={styles.infoBar}>
+            <View style={styles.avatar}>
+              <Image
+                style={styles.img}
+                source={{
+                  uri: "https://dep.com.vn/wp-content/uploads/2019/01/BLACKPINK-Lisa-New-Instagram-Profile-Picture-November-2018.jpg",
+                }}
               />
-            </TouchableOpacity> */}
+            </View>
+            <View styles={styles.info}>
+              <Text style={styles.name}>Đặng Ngọc Yến Nhi</Text>
+              <Text style={styles.role}>Member</Text>
+            </View>
           </View>
-          <FlatList
-            keyExtractor={(member) => member.id}
-            data={member.members}
-            renderItem={ListMember}
-            scrollEnabled={false} 
-          />
+          <View style={styles.show}>
+            <View style={styles.showWindow}>
+              <TouchableOpacity style={styles.window1}>
+                <Fo name="coins" style={styles.icon} />
+                <TouchableOpacity
+                  style={{ paddingLeft: 10, flexDirection: "column" }}
+                >
+                  <Text
+                    style={{
+                      color: "#426EF0",
+                      fontSize: 15,
+                      fontWeight: "medium",
+                    }}
+                  >
+                    Remaning Points
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#426EF0",
+                      fontSize: 15,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    1253544
+                  </Text>
+                </TouchableOpacity>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.showWindow1}>
+              <TouchableOpacity style={styles.window2}>
+                <Fo name="crown" style={styles.icon} />
+                <View style={{ paddingLeft: 10, flexDirection: "column" }}>
+                  <Text
+                    style={{
+                      color: "#426EF0",
+                      fontSize: 15,
+                      fontWeight: "medium",
+                    }}
+                  >
+                    Member Date
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#426EF0",
+                      fontSize: 15,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    22-02-2022
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </View>
+      <View
+        style={{
+          flex: 7,
+          top: 70,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <View style={styles.main}>
+          <TouchableOpacity onPress={profile} style={styles.square}>
+            <Mate name="clipboard-account" style={styles.icon1} />
+            <Text style={{ fontWeight: "bold", fontSize: 15 }}>Account</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={event} style={styles.square}>
+            <Fo name="calendar-check" style={styles.icon2} />
+            <Text style={{ fontWeight: "bold", fontSize: 15 }}>Event</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.square}>
+            <Mate name="qrcode-scan" style={styles.icon3} />
+            <Text style={{ fontWeight: "bold", fontSize: 15 }}>Scan</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.main1}>
+          <Image
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 10,
+              marginTop: 5,
+              marginLeft: 10,
+            }}
+            source={{
+              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsPrbO0lEb7OmtiKhLsY0dRGr80ivlvE0ziCaixuXR632HoOl5ONhycJbcnb88MMpCDxU&usqp=CAU",
+            }}
+          />
+          <Text style={{ fontSize: 15, fontWeight: "bold" }}>Leaderboard</Text>
+        </View>
+        <FlatList
+          keyExtractor={(member) => member.id}
+          data={member.members}
+          renderItem={ListMember}
+          scrollEnabled={false}
+          disableVirtualization={true}
+        />
+      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -368,7 +360,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 370,
     height: 60,
-    // borderRadius: 8,
+    borderRadius: 8,
     backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
@@ -379,10 +371,9 @@ const styles = StyleSheet.create({
   },
 
   main2: {
-    // marginTop: 20,
+    marginTop: 10,
     width: 370,
-    height: "100%",
-    // borderRadius: 8,
+    borderRadius: 8,
     backgroundColor: "white",
     // shadowColor: '#000',
     // shadowOffset: { width: -2, height: 3 },

@@ -4,7 +4,7 @@ export const addNew = "addNew";
 export const update = "update";
 export const deleteTransaction = "deleteTransaction";
 
-const IPConfig = "localhost";
+const IPConfig = "192.168.1.3";
 
 //lấy tất cả transaction
 export const getAllTransaction = (transactions) => {

@@ -9,6 +9,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fecthByID, fecthDelete } from "../redux/actions/giftAction";
+import * as transactionAction from "../redux/actions/transactionAction";
 import BackButton from "../components/BackButton";
 
 const DetailGift = ({ route, navigation }) => {
@@ -36,10 +37,29 @@ const DetailGift = ({ route, navigation }) => {
     navigation.navigate("UpdateGift", { gift: item, id: id });
   };
 
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
+  const [point, setPoint] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+
+  let timestamp = new Date().toUTCString();
+  const addTransaction = () => {
+    const transaction = {
+      name: item.name,
+      description: item.description,
+      photoURL: item.photoURL,
+      point: item.point,
+      quantity: item.quantity,
+      createAdd: timestamp,
+    };
+    dispatch(transactionAction.fecthAddNew(transaction));
+  };
+
   return (
     <ScrollView style={styles.container}>
-      <BackButton goBack={navigation.goBack} />
       <View style={styles.item}>
+        <BackButton goBack={navigation.goBack} />
         <Image
           style={styles.image}
           source={{
@@ -50,14 +70,25 @@ const DetailGift = ({ route, navigation }) => {
           <View style={styles.info1}>
             <Text style={styles.product}>Product</Text>
             <View style={styles.new}>
-              <Text style={{ color: "white", justifyContent: "center" }}>
+              <Text
+                style={{
+                  color: "white",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
                 New
               </Text>
             </View>
           </View>
           <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.point}>Point: {item.point} P</Text>
-          <Text style={styles.point}>Stock: {item.quantity}</Text>
+
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text style={styles.point}>Point: {item.point}P</Text>
+            <Text style={styles.point}>Stock: {item.quantity}</Text>
+          </View>
         </View>
         <View style={styles.description}>
           <Text style={{ fontSize: 24, fontWeight: "bold", marginTop: 30 }}>
@@ -69,11 +100,15 @@ const DetailGift = ({ route, navigation }) => {
 
       <View style={styles.footer}>
         <TouchableOpacity onPress={() => navigateUpdate(id)} style={styles.btn}>
-          <Text style={styles.btnText}>UPDATE</Text>
+          <Text style={styles.btnText}>Update</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => deleteMember(id)} style={styles.btn}>
-          <Text style={styles.btnText}>DELETE</Text>
+        <TouchableOpacity onPress={() => deleteGift(id)} style={styles.btn}>
+          <Text style={styles.btnText}>Delete</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => addTransaction()} style={styles.btn}>
+          <Text style={styles.btnText}>Exchange</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -127,8 +162,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   info1: {
-    width: 60,
+    width: "100%",
     flexDirection: "row",
+    marginBottom: 10,
+    justifyContent: "space-between",
   },
   product: {
     fontSize: 16,
@@ -139,14 +176,13 @@ const styles = StyleSheet.create({
     height: 20,
     backgroundColor: "black",
     borderRadius: 5,
-    justifyContent: "center",
     textAlign: "center",
-    marginLeft: 220,
   },
   name: {
     fontSize: 24,
     fontWeight: "bold",
     flexWrap: "wrap",
+    marginBottom: 10,
   },
   point: {
     fontSize: 16,
@@ -194,13 +230,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginRight: 10,
-    width: 150,
+    marginLeft: 10,
+    width: 110,
     justifyContent: "center",
     alignItems: "center",
   },
   btnText: {
     color: "#fff",
-    fontSize: 20,
+    fontSize: 15,
     textAlign: "center",
     justifyContent: "center",
     fontWeight: "bold",

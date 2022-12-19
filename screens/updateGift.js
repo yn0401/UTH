@@ -122,7 +122,6 @@ const UpdateGift = ({ route, navigation }) => {
       description: description,
       photoURL: photoURL,
       point: point,
-      quantity: quantity,
       createAdd: timestamp,
     };
     dispatch(giftAction.fecthUpdate(gift));
@@ -161,12 +160,6 @@ const UpdateGift = ({ route, navigation }) => {
             placeholder="Point"
             value={point}
             onChangeText={(value) => setPoint(value)}
-          />
-          <TextInput
-            style={styles.InputText}
-            placeholder="Stock"
-            value={quantity}
-            onChangeText={(value) => setQuantity(value)}
           />
           <TouchableOpacity
             style={styles.button}

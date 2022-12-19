@@ -12,7 +12,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 
 import { useDispatch } from "react-redux";
-import * as giftAction from "../redux/actions/giftAction";
+import * as eventAction from "../redux/actions/eventAction";
 
 import {
   getStorage,
@@ -23,7 +23,7 @@ import {
 } from "firebase/storage";
 import BackButton from "../components/BackButton";
 
-const AddGift = ({navigation}) => {
+const AddEvent = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/uthood-87d4e.appspot.com/o/12112.png?alt=media&token=2d92592b-a3fd-433c-bcfa-e4db34aa165b",
@@ -107,27 +107,30 @@ const AddGift = ({navigation}) => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [point, setPoint] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
 
-  let timestamp = new Date().toUTCString();
-  const addGift = () => {
-    const gift = {
+  //   let timestamp = new Date().toUTCString();
+  const addEvent = () => {
+    const event = {
       name: name,
       description: description,
+      location: location,
       photoURL: photoURL,
       point: point,
-      quantity: 1,
-      createAdd: timestamp,
+      dateStart: dateStart,
+      dateEnd: dateEnd,
     };
-    dispatch(giftAction.fecthAddNew(gift));
+    dispatch(eventAction.fecthAddNew(event));
   };
 
   return (
     <View style={styles.container}>
       <BackButton goBack={navigation.goBack} />
-      <Text style={styles.title}>Add New Gift</Text>
+      <Text style={styles.title}>Add New Event</Text>
       <Image
         style={styles.image}
         source={{
@@ -142,23 +145,34 @@ const AddGift = ({navigation}) => {
           <TextInput
             style={styles.InputText}
             placeholder="Name"
-            // value={value}
             onChangeText={(value) => setName(value)}
-            // underlineColorAndroid="transparent"
           />
           <TextInput
             style={styles.InputText}
             placeholder="Description"
-            // value={value}
             onChangeText={(value) => setDescription(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Point of Gift"
-            // value={value}
+            placeholder="Location"
+            onChangeText={(value) => setLocation(value)}
+          />
+          <TextInput
+            style={styles.InputText}
+            placeholder="Point"
             onChangeText={(value) => setPoint(value)}
           />
-          <TouchableOpacity style={styles.button} onPress={() => addGift()}>
+          <TextInput
+            style={styles.InputText}
+            placeholder="Start Date"
+            onChangeText={(value) => setDateStart(value)}
+          />
+          <TextInput
+            style={styles.InputText}
+            placeholder="End Date"
+            onChangeText={(value) => setDateEnd(value)}
+          />
+          <TouchableOpacity style={styles.button} onPress={() => addEvent()}>
             <Text style={styles.buttonText}>Confirm</Text>
           </TouchableOpacity>
         </View>
@@ -167,7 +181,7 @@ const AddGift = ({navigation}) => {
   );
 };
 
-export default AddGift;
+export default AddEvent;
 
 const styles = StyleSheet.create({
   container: {
