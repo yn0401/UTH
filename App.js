@@ -2,12 +2,12 @@ import { Provider } from "react-redux";
 import Navigation from "./screens/navigation";
 import store from "./redux/stores/store";
 import { theme } from "./core/theme";
+import HomeScreen from "./screens/home";
+import ProfileScreen from "./screens/profile";
 
 export default function App() {
   return (
-    <Provider store={store}> 
-<Navigation/>
-    </Provider>
+<ProfileScreen/>
 
 
 

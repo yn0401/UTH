@@ -54,16 +54,16 @@ const HomeNavigator = () => (
       options={{ headerShown: false }}
     />
 
-    <Screen name="Gift" component={TransactionDetailsScreen} options={{ headerShown: false }}/>
+    <Screen name="Gift" component={TransactionDetailsScreen} />
     <Screen name="Event" component={EventScreen} />
     <Screen name="Profile" component={ProfileScreen} />
     <Screen name="InfoEvent" component={InfoEventScreen} />
-    <Screen name="AddMember" component={AddMem} options={{ headerShown: false }} />
-    <Screen name="UpdateMember" component={UpdateMember} options={{ headerShown: false }}/>
-    <Screen name="DetailProfile" component={DetailProfile} options={{ headerShown: false }}/>
-    <Screen name="AddGift" component={AddGift} options={{ headerShown: false }}/>
-    <Screen name="UpdateGift" component={UpdateGift} options={{ headerShown: false }}/>
-    <Screen name="DetailGift" component={DetailGift} options={{ headerShown: false }}/>
+    <Screen name="AddMember" component={AddMem} />
+    <Screen name="UpdateMember" component={UpdateMember} />
+    <Screen name="DetailProfile" component={DetailProfile} />
+    <Screen name="AddGift" component={AddGift} />
+    <Screen name="UpdateGift" component={UpdateGift} />
+    <Screen name="DetailGift" component={DetailGift} />
   </Navigator>
 );
 
