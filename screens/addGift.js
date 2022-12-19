@@ -26,7 +26,7 @@ import BackButton from "../components/BackButton";
 const AddGift = ({navigation}) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
-      "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
+      "https://firebasestorage.googleapis.com/v0/b/uthood-87d4e.appspot.com/o/12112.png?alt=media&token=2d92592b-a3fd-433c-bcfa-e4db34aa165b",
   });
 
   const openImage = async () => {
@@ -118,7 +118,7 @@ const AddGift = ({navigation}) => {
       description: description,
       photoURL: photoURL,
       point: point,
-      quantity: quantity,
+      quantity: 1,
       createAdd: timestamp,
     };
     dispatch(giftAction.fecthAddNew(gift));
@@ -157,12 +157,6 @@ const AddGift = ({navigation}) => {
             placeholder="Point of Gift"
             // value={value}
             onChangeText={(value) => setPoint(value)}
-          />
-          <TextInput
-            style={styles.InputText}
-            placeholder="Quantity"
-            // value={value}
-            onChangeText={(value) => setQuantity(value)}
           />
           <TouchableOpacity style={styles.button} onPress={() => addGift()}>
             <Text style={styles.buttonText}>Confirm</Text>

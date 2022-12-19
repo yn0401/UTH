@@ -9,7 +9,7 @@ export const update = "update";
 export const deleteGift = "deleteGift";
 export const search = "search";
 
-export const IPConfig = "localhost";
+export const IPConfig = "192.168.1.3";
 
 export const getAllGift = (gifts) => {
   return {

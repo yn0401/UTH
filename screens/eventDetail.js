@@ -6,7 +6,7 @@ import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 
 import { fecthByID } from "../redux/actions/eventAction";
 
-const InfoEventScreen = ({ route, navigation }) => {
+const EventDetail = ({ route, navigation }) => {
   const id = route.params.id;
 
   let store = useSelector((store) => store.events.event);
@@ -32,7 +32,7 @@ const InfoEventScreen = ({ route, navigation }) => {
         <Image
           style={styles.imgEvent}
           source={{
-            uri: item.imageURL,
+            uri: item.photoURL,
           }}
         />
         <Text style={styles.nameEvent}>{item.name}</Text>
@@ -40,12 +40,12 @@ const InfoEventScreen = ({ route, navigation }) => {
         <Text style={styles.txtMap1}>{item.location}</Text>
         <View style={{ flexDirection: "row", marginTop: 15 }}>
           <View style={{ flexDirection: "column", width: "50%" }}>
-            <Text style={styles.date}>Date</Text>
-            {/* <Text style={styles.date1}>{(item.eventTime).toString()}</Text> */}
+            <Text style={styles.date}>Start Date</Text>
+            <Text style={styles.date1}>{item.dateStart}</Text>
           </View>
           <View style={{ flexDirection: "column", width: "50%" }}>
-            <Text style={styles.time}>Time</Text>
-            {/* <Text style={styles.time1}>{item.eventTime}</Text> */}
+            <Text style={styles.time}>End Date</Text>
+            <Text style={styles.time1}>{item.dateEnd}</Text>
           </View>
         </View>
       </View>
@@ -55,7 +55,8 @@ const InfoEventScreen = ({ route, navigation }) => {
     </View>
   );
 };
-export default InfoEventScreen;
+export default EventDetail;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
