@@ -6,7 +6,7 @@ export const update = "UPDATE";
 export const deleteMember = "DELETE_MEMBER";
 export const searchMember = "SEARCH_MEMBER";
 
-export const IPConfig = "192.168.1.3";
+export const IPConfig = "10.104.21.36";
 
 // Lấy tất cả member
 export const getAllMembers = (members) => {

@@ -9,7 +9,7 @@ export const update = "update";
 export const deleteGift = "deleteGift";
 export const search = "search";
 
-export const IPConfig = "192.168.1.3";
+export const IPConfig = "10.104.21.36";
 
 export const getAllGift = (gifts) => {
   return {
@@ -29,6 +29,7 @@ export const fetchAll = () => {
           },
         });
         const gifts = await res.json();
+        console.log(gifts);
         dispatch(getAllGift(gifts));
       } catch (error) {
         console.log(error);

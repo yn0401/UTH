@@ -59,13 +59,14 @@ const DetailGift = ({ route, navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.item}>
-        <BackButton goBack={navigation.goBack} />
+        
         <Image
           style={styles.image}
           source={{
             uri: item.photoURL,
           }}
         />
+        <BackButton goBack={navigation.goBack} />
         <View style={styles.info}>
           <View style={styles.info1}>
             <Text style={styles.product}>Product</Text>

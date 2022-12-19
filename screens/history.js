@@ -26,7 +26,6 @@ const HistoryScreen = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(transactionActions.fecthAll());
-    console.log(transaction);
   }, []);
 
   const ListTransaction = ({ item }) => {
