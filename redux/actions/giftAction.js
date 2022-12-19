@@ -29,6 +29,7 @@ export const fetchAll = () => {
           },
         });
         const gifts = await res.json();
+        console.log(gifts);
         dispatch(getAllGift(gifts));
       } catch (error) {
         console.log(error);

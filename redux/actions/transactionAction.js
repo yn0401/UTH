@@ -25,6 +25,7 @@ export const fecthAll = () => {
           },
         });
         const transactions = await res.json();
+        console.log(transactions);
         dispatch(getAllTransaction(transactions));
       } catch (error) {
         console.log(error);
