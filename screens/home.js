@@ -20,13 +20,13 @@ import { getAuth} from "firebase/auth";
 
 const HomeScreen = ({ navigation }) => {
   const auth = getAuth();
-  // const user = auth.currentUser;
-  // if (user) {
-  //   console.log(user.displayName)
-  // } else {
-  //   console.log('no user')
-  // }
-
+  const user = auth.currentUser;
+  useEffect(() => {
+    if(user){
+      console.log(user);
+    }
+  },[user])
+  
   const event = () => {
     navigation.navigate("Event");
   };
@@ -52,7 +52,6 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     dispatch(fetchAll());
     console.log(member.members);
-
   }, [dispatch(fetchAll())]);
 
   const ListMember = ({ item }) => {
@@ -204,6 +203,7 @@ const HomeScreen = ({ navigation }) => {
             keyExtractor={(member) => member.id}
             data={member.members}
             renderItem={ListMember}
+            scrollEnabled={false} 
           />
         </View>
       </ScrollView>
