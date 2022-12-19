@@ -17,10 +17,14 @@ import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import BackButton from '../components/BackButton';
 
 function Guest1({ navigation }) {
-  const navigate = () => {
-    navigation.navigate("Main");
+  const navigateToRegister = () => {
+    navigation.navigate("Register");
+  };
+  const navigateToStart = () => {
+    navigation.navigate("Start");
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -35,7 +39,7 @@ function Guest1({ navigation }) {
         <View style={styles.content}>
           <View style={styles.card}>
             <View style={styles.headerCard}>
-              <Text style={styles.name}>Chào Bạn !</Text>
+              <Text style={styles.name}>Hello !</Text>
               <TouchableOpacity
                 style={{
                   height: 20,
@@ -48,8 +52,8 @@ function Guest1({ navigation }) {
                   opacity: 0.7,
                 }}
                 onPress={() => {
-                  navigation.navigate("Thông tin thành viên", {
-                    name: "Thông tin thành viên",
+                  navigation.navigate("MembershipInfo", {
+                    name: "MembershipInfo",
                   });
                 }}
               >
@@ -59,30 +63,47 @@ function Guest1({ navigation }) {
             <View style={styles.contentCard}>
               <View style={styles.txtContent}>
                 <Text style={styles.type}>
-                  Tham gia chương trình thành viên của RunWay Club ngay để tích
-                  điểm và nhận quà hấp dẫn
+                  Join the membership program of RunWay Club now to get a lot of prizes and benefits
                 </Text>
               </View>
             </View>
-            <TouchableOpacity
-              style={{
-                marginTop: 30,
-                marginLeft: 20,
-                height: 35,
-                width: 130,
-                borderRadius: 10,
-                backgroundColor: "white",
-                textAlign: "center",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{ fontSize: 13, fontWeight: "bold", color: "#426ef0" }}
-              >
-                Đăng nhập
-              </Text>
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity
+                style={{
+                  marginTop: 10,
+                  marginLeft: 20,
+                  height: 35,
+                  width: 130,
+                  borderRadius: 10,
+                  backgroundColor: "white",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onPress={navigateToRegister}>
+                <Text style={{ fontSize: 13, fontWeight: "bold", color: "#426ef0" }}>
+                  Register
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  marginTop: 10,
+                  marginLeft: 20,
+                  height: 35,
+                  width: 130,
+                  borderRadius: 10,
+                  backgroundColor: "white",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onPress={navigateToStart}>
+                <Text style={{ fontSize: 13, fontWeight: "bold", color: "#426ef0" }}>
+                  Back
+                </Text>
+              </TouchableOpacity>
+            </View>
+
           </View>
 
           <View style={styles.card1}>
@@ -120,7 +141,7 @@ function Guest1({ navigation }) {
                     }}
                   >
                     {" "}
-                    ĐĂNG NHẬP NGAY{" "}
+                    JOIN NOW{" "}
                   </Text>
                   <TouchableOpacity
                     style={{
@@ -133,7 +154,7 @@ function Guest1({ navigation }) {
                       alignItems: "center",
                       opacity: 0.7,
                     }}
-                    onPress={navigate}
+                    onPress={navigateToRegister}
                   >
                     <Mat
                       name="navigate-next"
@@ -143,7 +164,7 @@ function Guest1({ navigation }) {
                   </TouchableOpacity>
                 </View>
                 <Text style={{ marginTop: 10 }}>
-                  NHIỀU QUÀ TẶNG HẤP DẪN CHÀO BẠN MỚI
+                  A LOT OF SPECIAL THINGS ARE WAITING FOR YOU !!!
                 </Text>
               </View>
             </View>
@@ -156,7 +177,7 @@ function Guest1({ navigation }) {
               fontWeight: "bold",
             }}
           >
-            Quà Tặng Nổi Bật
+            TOP SPECIAL GIFTS
           </Text>
           <View style={styles.card2}>
             <View style={styles.gift}>
@@ -246,13 +267,13 @@ function Guest2({ navigation }) {
         <View style={styles.content}>
           <View style={styles.card}>
             <View style={styles.headerCard}>
-              <Text style={styles.name}>Chào bạn !</Text>
+              <Text style={styles.name}>Hi!</Text>
             </View>
             <View style={styles.contentCard}>
               <View style={styles.txtContent}>
                 <Text style={styles.type}>
-                  Tham gia chương trình thành viên của RunWay Club ngay để tích
-                  điểm và nhận quà hấp dẫn
+                  Join the membership program of RunWay Club now to get a lot of prizes and benefits
+
                 </Text>
               </View>
             </View>
@@ -268,11 +289,12 @@ function Guest2({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
               }}
+              onPress={() => navigation.navigate("Register")}
             >
               <Text
                 style={{ fontSize: 13, fontWeight: "bold", color: "#426ef0" }}
               >
-                Đăng nhập
+                Register
               </Text>
             </TouchableOpacity>
           </View>
@@ -293,8 +315,7 @@ function Guest2({ navigation }) {
                 <Text
                   style={{ fontSize: 11, fontWeight: "medium", marginLeft: 20 }}
                 >
-                  Đăng nhập làm thành viên RunWay Club để bắt đầu thu nhập Coin,
-                  nâng cấp vai trò và nhận nhiều ưu đãi
+                  Sign in and become the member of RunWay Club to start collecting points, upgrade your membership level and get a lot of prizes and benefits
                 </Text>
               </View>
               <View
@@ -322,7 +343,7 @@ function Guest2({ navigation }) {
               fontWeight: "bold",
             }}
           >
-            Đặc quyền thành viên
+            Mebmership Program
           </Text>
           <View style={{ alignItems: "center", marginTop: 20 }}>
             <View style={styles.gift}>
@@ -338,7 +359,7 @@ function Guest2({ navigation }) {
                 <Text
                   style={{ marginLeft: 10, fontSize: 14, fontWeight: "bold" }}
                 >
-                  Thưởng làm quen
+                  Starter
                 </Text>
                 <Text style={{ marginLeft: 10, fontSize: 12, marginTop: 10 }}>
                   Thưởng 1 mã ưu đãi 50% ngay khi đăng nhập tài khoản
@@ -392,11 +413,16 @@ function Guest2({ navigation }) {
 
 const Stack = createNativeStackNavigator();
 
-function GuestScreen() {
+function GuestScreen({ navigation, back }) {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Cùng đón một ngày thú vị nhé !" component={Guest1} />
-      <Stack.Screen name="Thông tin thành viên" component={Guest2} />
+    <Stack.Navigator initialRouteName="NEW DAY NEW JOURNEY !">
+      <Stack.Screen
+        name="NEW DAY NEW JOURNEY !"
+        component={Guest1}
+      />
+      <Stack.Screen
+        name="MembershipInfo"
+        component={Guest2} />
     </Stack.Navigator>
   );
 }

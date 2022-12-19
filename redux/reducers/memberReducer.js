@@ -35,7 +35,7 @@ export const memberReducer = (state = initialState, action) => {
     case addNew:
       return {
         ...state,
-        members: [...state.members, action.payload],
+        members: [...state.members],
       };
     case update:
       return {

@@ -6,7 +6,7 @@ export const update = "UPDATE";
 export const deleteMember = "DELETE_MEMBER";
 export const searchMember = "SEARCH_MEMBER";
 
-import IPConfig from "../../config/ipConfig";
+export const IPConfig = "localhost";
 
 // Lấy tất cả member
 export const getAllMembers = (members) => {
@@ -29,7 +29,7 @@ export const fetchAll = () => {
         });
         const members = await res.json();
         dispatch(getAllMembers(members));
-        console.log(members);
+        // console.log(members);
       } catch (error) {
         console.log(error);
       }

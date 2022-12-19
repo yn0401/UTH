@@ -7,11 +7,12 @@ import Mate from "react-native-vector-icons/MaterialCommunityIcons";
 import Mat from "react-native-vector-icons/MaterialIcons";
 import Foun from "react-native-vector-icons/Foundation";
 
-const TransactionDetailsScreen = () => {
+const TransactionDetailsScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.container1}>
+                    <BackButton goBack={navigation.goBack}/>
                     <Text style={styles.text1}>Chi tiết giao dịch</Text>
                     <View style={styles.view1}>
                         <View style={styles.view2}

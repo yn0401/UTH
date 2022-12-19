@@ -12,7 +12,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 
 import { useDispatch } from "react-redux";
-import * as memberAction from "../redux/actions/memberAction";
+import * as giftAction from "../redux/actions/giftAction";
 
 import {
   getStorage,
@@ -21,43 +21,9 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-import { firebase } from "../config/firebase";
 import BackButton from "../components/BackButton";
 
-const AddMem = ({navigation }) => {
-  // const checkTextInput = () => {
-  //   //Check for the Name TextInput
-  //   if (!name.trim()) {
-  //     alert("Please Enter Name");
-  //     return;
-  //   }
-  //   //Check for the Email TextInput
-  //   if (!IconGift.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!ColorIcon.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!IconFire.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!ColorIconFire.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-  //   if (!Point.trim()) {
-  //     alert("Please Enter Email");
-  //     return;
-  //   }
-
-  //   //Checked Successfully
-  //   //Do whatever you want
-  //   alert("Success");
-  // };
-
+const AddGift = ({navigation}) => {
   const [selectedImage, setSelectedImage] = useState({
     localUri:
       "https://firebasestorage.googleapis.com/v0/b/mobile-520b1.appspot.com/o/12112.png?alt=media&token=fc42e0f2-3c2e-48f9-8cd6-8cb5b10e7f5c",
@@ -140,30 +106,28 @@ const AddMem = ({navigation }) => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const [description, setDescription] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  const [currentPoint, setCurrentPoint] = useState(0);
-  const [dob, setDob] = useState("");
-  const [createAdd, setCreateAdd] = useState("");
+  const [point, setPoint] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   let timestamp = new Date().toUTCString();
-  const addMember = () => {
-    const member = {
+  const addGift = () => {
+    const gift = {
       name: name,
-      role: role,
-      url: photoURL,
-      currentPoint: currentPoint,
-      dob: dob,
+      description: description,
+      photoURL: photoURL,
+      point: point,
+      quantity: quantity,
       createAdd: timestamp,
     };
-    // console.log(member.url);
-    dispatch(memberAction.fetchAddNew(member));
+    dispatch(giftAction.fecthAddNew(gift));
   };
 
   return (
     <View style={styles.container}>
       <BackButton goBack={navigation.goBack} />
-      <Text style={styles.title}>Add New Member</Text>
+      <Text style={styles.title}>Add New Gift</Text>
       <Image
         style={styles.image}
         source={{
@@ -184,23 +148,23 @@ const AddMem = ({navigation }) => {
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Role"
+            placeholder="Description"
             // value={value}
-            onChangeText={(value) => setRole(value)}
+            onChangeText={(value) => setDescription(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Current Point"
+            placeholder="Point of Gift"
             // value={value}
-            onChangeText={(value) => setCurrentPoint(value)}
+            onChangeText={(value) => setPoint(value)}
           />
           <TextInput
             style={styles.InputText}
-            placeholder="Date of Birth"
+            placeholder="Quantity"
             // value={value}
-            onChangeText={(value) => setDob(value)}
+            onChangeText={(value) => setQuantity(value)}
           />
-          <TouchableOpacity style={styles.button} onPress={() => addMember()}>
+          <TouchableOpacity style={styles.button} onPress={() => addGift()}>
             <Text style={styles.buttonText}>Confirm</Text>
           </TouchableOpacity>
         </View>
@@ -209,7 +173,8 @@ const AddMem = ({navigation }) => {
   );
 };
 
-export default AddMem;
+export default AddGift;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
